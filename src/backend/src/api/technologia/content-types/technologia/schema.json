@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "technologias",
+  "info": {
+    "singularName": "technologia",
+    "pluralName": "technologias",
+    "displayName": "Technologia",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "customField",
+      "options": {
+        "preset": "defaultHtml"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "button": {
+      "type": "string"
+    },
+    "position": {
+      "type": "integer"
+    }
+  }
+}

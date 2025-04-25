@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dlaczego_marbuds",
+  "info": {
+    "singularName": "dlaczego-marbud",
+    "pluralName": "dlaczego-marbuds",
+    "displayName": "dlaczego-marbud"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "customField",
+      "options": {
+        "preset": "defaultHtml"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "description1": {
+      "type": "customField",
+      "options": {
+        "preset": "defaultMarkdown"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "description2": {
+      "type": "customField",
+      "options": {
+        "preset": "defaultMarkdown"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "description3": {
+      "type": "customField",
+      "options": {
+        "preset": "defaultMarkdown"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    }
+  }
+}

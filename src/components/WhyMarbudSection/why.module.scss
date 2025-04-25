@@ -1,0 +1,44 @@
+.whyMarbudLogoClass{
+    color: #59956C;
+}
+
+.whyMarbudTitle{
+    text-align: center;
+    margin-top: 3em;
+}
+
+.whyMarbudBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+}
+
+.whyMarbudWrapper{
+    display: flex;
+    justify-content: center;
+    .whyMarbudBox{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;    
+        text-align: center;
+        max-width: 25%;
+        margin: 3rem 2rem;
+        font-size: 1rem;
+        .marbudIcon{
+            width: 100px;
+            height: 100px;
+        }
+    }
+}
+
+@media (max-width: 768px){
+    .whyMarbudWrapper{
+        flex-direction: column;
+        align-items: center;
+    }
+    .whyMarbudBox{
+        min-width: 60%;
+    }
+}

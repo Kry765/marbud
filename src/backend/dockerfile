@@ -1,0 +1,26 @@
+FROM node:18
+
+# Instaluj wymagane pakiety
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    python3 \
+    libvips-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Tworzymy katalog roboczy
+WORKDIR /app
+
+# Kopiujemy package.json i package-lock.json
+COPY package*.json ./
+
+# Instalujemy zależności
+RUN npm install
+
+# Kopiujemy resztę aplikacji
+COPY . .
+
+# Otwieramy port
+EXPOSE 1337
+
+# Uruchamiamy strapi
+CMD ["npm", "run", "develop"]

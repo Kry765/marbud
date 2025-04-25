@@ -1,0 +1,66 @@
+{
+  "kind": "collectionType",
+  "collectionName": "domki_calorocznes",
+  "info": {
+    "singularName": "domki-caloroczne",
+    "pluralName": "domki-calorocznes",
+    "displayName": "Domki-caloroczne",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "roomCount": {
+      "type": "string"
+    },
+    "materials": {
+      "type": "string"
+    },
+    "isolation": {
+      "type": "string"
+    },
+    "area": {
+      "type": "string"
+    },
+    "price": {
+      "type": "string"
+    },
+    "mainImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "description": {
+      "type": "text"
+    },
+    "specification": {
+      "type": "customField",
+      "options": {
+        "preset": "defaultHtml"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "image": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "position": {
+      "type": "integer"
+    }
+  }
+}

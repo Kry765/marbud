@@ -1,0 +1,20 @@
+{
+    "contactData": [
+        {
+            "icon": "call-outline",
+            "title": "Telefon:",
+            "description": "534-800-327"
+        },
+        {
+            "icon": "location-outline",
+            "title": "Adres:",
+            "description": "Jagiellońska 231, 34-360 Milówka"
+        },
+        {
+            "icon": "mail-outline",
+            "title": "E-mail:",
+            "description": "marcin.buddom@onet.eu"
+        }
+
+    ]
+}

@@ -1,0 +1,63 @@
+{
+    "gallerydata":[
+        {
+            "img": "picture/gallery/domek_11.jpg",
+            "title": "x"
+          },
+          {
+            "img": "picture/gallery/domek_12.jpg",
+            "title": "y",
+            "alt": "x"
+          },
+          {
+            "img": "picture/gallery/domek_13.jpg",
+            "title": "Hats",
+            "alt": "x"
+          },
+          {
+            "img": "picture/gallery/domek_14.jpg",
+            "title": "Honey",
+            "alt": "x"
+          },
+          {
+            "img": "picture/gallery/domek_15.jpg",
+            "title": "Hats",
+            "alt": "x"
+          },
+          {
+            "img": "picture/gallery/domek_16.jpg",
+            "title": "Hats",
+            "alt": "x"
+          },
+          {
+            "img": "picture/gallery/domek_17.jpg",
+            "title": "Hats",
+            "alt": "x"
+          },
+          {
+            "img": "picture/gallery/domek_18.jpg",
+            "title": "Hats",
+            "alt": "x"
+          },
+          {
+            "img": "picture/gallery/domek_19.jpg",
+            "title": "Hats",
+            "alt": "x"
+          },
+          {
+            "img": "picture/gallery/domek_20.jpg",
+            "title": "Hats",
+            "alt": "x"
+          },
+          {
+            "img": "picture/gallery/domek_21.jpg",
+            "title": "Hats",
+            "alt": "x"
+          },
+          {
+            "img": "picture/gallery/domek_22.jpg",
+            "title": "Hats",
+            "alt": "x"
+          }
+    ]
+}

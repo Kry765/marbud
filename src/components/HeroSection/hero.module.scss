@@ -1,0 +1,59 @@
+.findStyleBox {
+    margin: 3em 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    &.reverse {
+        flex-direction: row-reverse;
+    }
+}
+
+.findStyleWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    margin: 0 2.2em;
+    width: 50%;
+}
+
+
+.findStyleDescription {
+    margin: 1em 0;
+    white-space: pre-wrap;
+
+}
+
+.findStyleBtn {
+    margin-left: auto;
+}
+
+.findStyleImage {
+    max-width: 50%;
+}
+
+.findStyleImage img {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .findStyleBox {
+        flex-direction: column-reverse !important;
+    }
+
+    .findStyleWrapper {
+        text-align: center;
+        margin: 0;
+    }
+
+    .findStyleBtn {
+        margin-left: 0;
+    }
+
+    .findStyleImage {
+        max-width: 100%;
+    }
+}

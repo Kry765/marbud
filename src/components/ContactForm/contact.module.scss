@@ -1,0 +1,67 @@
+.contactWrapper{
+    margin: 4em 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
+    .formInfo{
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        min-width: 30%;
+        height: 100%;
+        .contactInfoBox{
+            display: flex;
+            padding: 1em;
+            background-color: #59956C;
+            color: #fff;
+        }
+    }
+    
+    .formBox{
+        padding: 0em 2em;
+        min-width: 70%;
+    }
+    
+}
+
+.titleForm{
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+
+.titleColor{
+    color: #59956C;
+}
+
+
+
+
+.contactIcon{
+    padding: 2em 1em;
+    width: 25px;
+    height: 25px;
+}
+
+.contactTitleBold{
+    font-weight: bold;
+}
+
+.contactDescription{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media (max-width: 768px){
+    .contactWrapper{
+        .formInfo{
+            display: none;
+        }
+        .contactWrapper{
+            text-align: center;
+        }
+
+    }
+
+}

@@ -1,0 +1,29 @@
+{
+    "sectiondata": [
+        {
+            "id": 1,
+            "title": "znajdź styl swojego drewnianego domu",
+            "description": "Nasze propozycje są wynikiem wielu lat doświadczeń, zaangażowania i sprawdzonej technologii. Wybierz swój wymarzony dom spośród kilkunastu dostępnych projektów.",
+            "btn": "galeria",
+            "path": "../galeria",
+            "image": "/picture/section/photo_gallery.jpg"
+        },
+        {
+            "id": 2,
+            "title": "jesteś eko? buduj z drewna",
+            "description": "Firma Marbud od ponad 10 lat zajmuje się budową ekologicznych domów z drewna. Nasze doświadczenie zebrane pozwala zaoferować Państwu solidne wykonane budynki.",
+            "btn": "jak działamy",
+            "path": "../jak-dzialamy",
+            "image": "/picture/section/photo_eco.jpg"
+        },
+        {
+            "id": 3,
+            "title": "technologia",
+            "description": "Największą zaletą budowy domu szkieletowego przez firmę Marbud jest szybkość i dokładność realizacji. Nasze domy mogą być montowane o każdej porze roku, ponieważ przy ich budowie nie ma zbyt wielu prac mokrych.",
+            "btn": "technologia",
+            "path": "../technologia",
+            "image": "/picture/section/photo_technology.jpg"
+        }
+    ]
+}
+

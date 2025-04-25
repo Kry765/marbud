@@ -1,0 +1,20 @@
+{
+"footerData":[
+{
+    "footerDescription": "Firma Marbud od ponad 10 lat zajmuje się budową ekologicznych domów z drewna.",
+    "footerContact": 
+    {
+        "title": "kontakt",
+        "name": "Marcin Nogowczyk",
+        "phone": "534-800-328",
+        "email": "marcin.buddom@onet.eu"
+    },
+    "footerAdress": 
+    {
+        "title": "adres",
+        "street": "ul. Jagiellońska 231",
+        "city": "34-360 Milówka"
+    }
+}
+]
+}

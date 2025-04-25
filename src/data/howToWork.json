@@ -1,0 +1,21 @@
+{
+"howtowork": [
+        {
+            "icon": "search-outline",
+            "description": "1. Przeglądaj naszą ofertę i znajdź model, który najlepiej odpowiada Twoim potrzebom. Jeśli masz indywidualne wymagania – chętnie jeuwzględnimy!"
+        },
+        {
+            "icon": "call-outline",
+            "description": "2. Chcesz omówić szczegóły? Napisz do nas lub zadzwoń. Przedstawimy Ci wszystkie szczegóły dotyczące realizacji zamówienia, terminu wykonania oraz warunków dostawy."
+        },
+        {
+            "icon": "document-text-outline",
+            "description": "3. Na podstawie Twoich oczekiwań przygotujemy szczegółową wycenę. Jeśli wszystko się zgadza – przechodzimy do kolejnego kroku!"
+        },
+        {
+            "icon": "home-outline",
+            "description": "4. Po akceptacji warunków podpisujemy umowę i przystępujemy do realizacji. Twój nowy drewniany domek już wkrótce stanie na Twojej działce!"
+        }
+]
+}
+

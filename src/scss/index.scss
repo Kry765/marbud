@@ -1,0 +1,28 @@
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body{
+    font-size: 16px;
+    font-family: "Lexend Deca", sans-serif;
+}
+
+.slick-dots.slick-thumb li.slick-active div {
+    background-color: #59956C !important;
+  }
+
+a{
+    text-decoration: none;
+    color: #fff;
+}
+
+ul {
+    list-style-type: disc; /* Dodaje kropki do listy */
+    margin-left: 20px;      /* Wyrównuje listę */
+  }
+  
+  li {
+    margin-bottom: 5px;    /* Dodaje przestrzeń między elementami listy */
+  }

@@ -1,0 +1,40 @@
+.descriptionWrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.title{
+    padding: 1em 1em;
+}
+
+.descriptionBox,
+.mainImgBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.descriptionBox{
+    align-items: flex-start; 
+    flex-grow: 1;
+    width: 50%;
+}
+.mainImgBox{
+    flex-grow: 2;
+    max-width: 50%;
+}
+.mainImg{
+    width: 50%;
+    padding: 2em;
+}
+
+.specificationDescription{
+    padding: 1em 2em;
+}
+
+.buttonOfferts{
+    margin: 1em 2em;
+}

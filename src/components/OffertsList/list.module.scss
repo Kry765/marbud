@@ -1,0 +1,40 @@
+.title{
+    margin: 2em 1em;
+}
+
+.titleColor{
+    color: #59956C;
+}
+
+.offertsSummerDescription{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    min-width: 50%;
+    // margin: 0 1em;
+    line-height: 2em;
+}
+
+.offertsSummerImageBox{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
+
+.offertsSummerImage{
+    width: 100%;
+    text-align: center;
+
+}
+
+.buttonOfferts{
+    margin-top: auto;
+}
+
+.offertsSummerWrapper{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 1.4rem;
+    margin: 2em 1em;
+}

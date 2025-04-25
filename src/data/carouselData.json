@@ -1,0 +1,28 @@
+{
+"carouselData":[
+    {
+        "image": "/picture/slider/home_slider_1.jpg",
+        "description": "Produkcja domków z drewna.",
+        "button": "oferta",
+        "path": "../oferta"
+    },
+    {
+        "image": "/picture/slider/home_slider_2.jpg",
+        "description": "Tworzymy domki na styl kanadyjski.",
+        "button": "technologia",
+        "path": "../technologia"
+    },
+    {
+        "image": "/picture/slider/home_slider_3.jpg",
+        "description": "Oferujemy sprawną produkcję oraz montaż w dogodnym terminie.",
+        "button": "kontakt",
+        "path": "../kontakt"
+    },
+    {
+        "image": "/picture/slider/home_slider_4.jpg",
+        "description": "Nasze propozycje są wynikiem wielu lat doświadczeń.",
+        "button": "galeria",
+        "path": "../galeria"
+    }
+]
+}

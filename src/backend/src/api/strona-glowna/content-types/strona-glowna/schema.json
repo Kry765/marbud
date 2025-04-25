@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "strona_glownas",
+  "info": {
+    "singularName": "strona-glowna",
+    "pluralName": "strona-glownas",
+    "displayName": "Strona-glowna",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "position": {
+      "type": "integer"
+    },
+    "button": {
+      "type": "string"
+    },
+    "title": {
+      "type": "customField",
+      "options": {
+        "preset": "defaultHtml"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "description": {
+      "type": "customField",
+      "options": {
+        "preset": "defaultMarkdown"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    }
+  }
+}

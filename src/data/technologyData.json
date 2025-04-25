@@ -1,0 +1,45 @@
+{
+    "technologydata": [
+      {
+        "title": "technologia",
+        "image": "/picture/gallery/domek_11.jpg",
+        "description": "Ściany konstrukcyjne z drewna, stropy oraz więźbę dachową przygotowujemy w naszym zakładzie produkcyjnym w Milówce k/Żywca.",
+        "details": "Do budowy każdego domu używamy ściśle wyselekcjonowanego drewna świerkowego, które nabywamy w sprawdzonych pobliskich tartakach."
+      },
+      {
+        "title": "tradycyjna bryla",
+        "image": "/picture/gallery/domek_11.jpg",
+        "description": "Domy drewniane naszej firmy posiadają zwartą tradycyjną bryłę.",
+        "advance": [
+          "Taka forma pozwala nam na tworzenie energooszczędnych i ekologicznych domów.",
+          "Dzięki takiej formie kluczową zaletą jest niski koszt budowy i eksploatacji, zwłaszcza w porównaniu z domami murowanymi."
+        ]
+      },
+      {
+        "title": "Konstrukcja nośna domu",
+        "image": "/picture/gallery/domek_11.jpg",
+        "description": "Konstrukcja nośna domu składa się z systemu słupów opartych na poziomej belce – podwalinie zakotwionej w fundamencie.",
+        "details": [
+          "Słupy o przekroju 5 x 10 cm lub 5 x 15 cm rozstawia się w odstępach od 60 cm do 80 cm.",
+          "Przestrzeń między nimi wypełniamy materiałem izolacyjnym chroniącym przed zimnem, wilgocią i hałasem."
+        ]
+      },
+      {
+        "title": "izolacja",
+        "image": "/picture/gallery/domek_11.jpg",
+        "description": "Od zewnątrz materiał izolacyjny osłaniamy folią wiatroizolacyjną, a od środka domu – paroizolacyjną. Ściany od wewnątrz wykańczamy płytami gipsowo-kartonowymi lub boazerią drewnianą.",
+        "details": "W standardowej ofercie ściany z zewnątrz  pokrywamy deskami elewacyjnymi, ale budynek o konstrukcji szkieletowej może również wyglądać jak dom murowany."
+      },
+      {
+        "title": "okna i drzwi",
+        "image": "/picture/gallery/domek_11.jpg",
+        "description": "Okna i drzwi montuje się w otworach konstrukcyjnych przykrytych podwójnymi belkami nadprożowymi. ",
+        "details": "Okna i drzwi wejściowe wykonywane są pod wymiar i przygotowywane w zakładzie produkcyjnym indywidualnie dla każdego zamówienia."
+      },
+      {
+        "image": "/picture/gallery/domek_11.jpg",
+        "description": "Dzięki sprawdzonej technologii, najlepszym materiałom i wiedzy naszych pracowników jesteśmy w stanie wykonać Państwa dom marzeń w ciągu 2-3 miesięcy od złożenia zamówienia.",
+        "details": "Sam montaż na miejscu budowy będzie trwał tylko kilka dni!"
+      }
+    ]
+  }

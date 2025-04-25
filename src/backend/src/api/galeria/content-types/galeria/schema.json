@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "galerias",
+  "info": {
+    "singularName": "galeria",
+    "pluralName": "galerias",
+    "displayName": "Galeria",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "customField",
+      "options": {
+        "preset": "defaultHtml"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+    "whymarbudData":[
+        {
+            "icon": "icon/truck.svg",
+            "description": "Oferujemy sprawną produkcję, dostawę oraz montaż w dogodnym terminie."
+        },
+        {
+            "icon": "icon/hammer.svg",
+            "description": "Dbamy o każdy detal, gwarantując solidną konstrukcję i estetyczne wykończenie."
+        },
+        {
+            "icon": "icon/house.svg",
+            "description": "Tworzymy domki dostosowane do Twoich potrzeb"
+        }
+    ]
+}
