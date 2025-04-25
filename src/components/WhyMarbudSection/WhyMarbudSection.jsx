@@ -16,7 +16,7 @@ export default function WhyMarbudSection() {
             <div key={index} className={why.whyMarbudBox}>
               <img
                 src={data.icon}
-                alt="icon why marbud"
+                alt="icon why marbudtest"
                 className={why.marbudIcon}
               />
               <p>{data.description}</p>
