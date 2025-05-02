@@ -10,12 +10,14 @@ export default function HomeSlider() {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const res = await fetch(`http://localhost:1337/api/silders?populate=*`);
+        const res = await fetch(
+          `https://marbudapi.onrender.com/api/silders?populate=*`
+        );
         const data = await res.json();
         const formattedData = data.data.map((item) => ({
           id: item.id,
           description: item.description,
-          imageUrl: `http://localhost:1337${item.image?.url}`,
+          imageUrl: `https://marbudapi.onrender.com${item.image?.url}`,
           button: item.button,
           path: item.path,
         }));
