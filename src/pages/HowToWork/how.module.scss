@@ -1,0 +1,68 @@
+.title{
+  text-transform: uppercase;
+  text-align: center;
+  margin: 2em 0;
+  font-weight: bold;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3em;
+  padding-left: 5em;
+  margin: 4em;
+}
+  
+.box {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  z-index: 1;
+
+  .howToWorkIcon {
+    background-color: #59956C;
+    color: #fff;
+    padding: 1em;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; 
+    z-index: 2;
+  }
+
+  .howToWorkDescription {
+    width: 50%;
+    margin: 0;
+  }
+}
+
+@media (max-width: 768px){
+  .container{
+    margin: 2em 0;
+    padding-left: 0; 
+    align-items: center; 
+  }
+  
+  .box{
+    flex-direction: column; 
+    text-align: center; 
+    gap: 1em; 
+    width: 80%; 
+    
+    .howToWorkIcon {
+      width: 60px; 
+      height: 60px;
+      padding: 0.5em;
+    }
+    
+    .howToWorkDescription {
+      width: 100%; 
+    }
+  }
+}

@@ -1,0 +1,28 @@
+.mainGallery{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main{
+    margin: 3em auto; 
+    min-height: 500px;      
+    max-width: 1200px; 
+    min-height: 250px;
+    padding: 20px 0;
+
+}
+
+.title{
+    margin: 3em 2em;
+}
+
+.description{
+    margin: 3em 2em;
+}
+.galleryView{
+    display: flex;
+    justify-content: center;
+    max-width: 1200px;  
+    min-height: 250px;
+}

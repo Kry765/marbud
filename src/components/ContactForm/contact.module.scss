@@ -1,0 +1,113 @@
+.contactWrapper {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    .formBox {
+        background: #fff;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+        position: relative;
+        margin: 4em;
+        max-width: 60%;
+        .inputError {
+            border: 1px solid #d32f2f !important;
+            background-color: #ffebee;
+        }
+
+        .successMessage {
+            color: #2e7d32;
+            background: #e8f5e9;
+            padding: 1em;
+            margin-top: 1em;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .errorMessage {
+            color: #d32f2f;
+            background: #ffebee;
+            padding: 1em;
+            margin-top: 1em;
+            border-radius: 4px;
+            text-align: center;
+            
+            .fieldError {
+                margin-top: 0.5em;
+                font-size: 0.9em;
+                padding-left: 1em;
+            }
+        }
+
+        .submitButton {
+            background: #2E7D32;
+            color: white;
+            border: none;
+            padding: 0.8em 2em;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1em;
+            transition: background 0.3s;
+
+            &:hover {
+                background: #1b5e20;
+            }
+
+            &:disabled {
+                background: #cccccc;
+                cursor: not-allowed;
+            }
+        }
+    }
+
+    .formInfo {
+        background: #f9f9f9;
+        align-self: stretch;
+        min-width: 40%;
+        padding-top: 2em;
+        margin: 5em;
+        .contactInfoBox {
+            display: flex;
+
+            padding: 1.5em;
+            background-color: #59956C;
+            color: #fff;
+            align-self: center;
+            min-height: 30%;
+        }
+    }
+}
+
+.contactTitleBold {
+    font-weight: bold;
+}
+
+.contactIcon {
+    font-size: 1.8rem; 
+    margin-right: 1em;
+    min-width: 30px; 
+}
+
+.titleForm {
+    text-transform: uppercase;
+    margin: 2em auto;
+}
+
+.titleColor {
+    color: #2E7D32;
+}
+
+@media (max-width: 768px) {
+    .contactWrapper {
+        align-items: center;
+        flex-direction: column;
+        
+        .formBox, .formInfo {
+            width: 100%;
+        }
+    
+        .formInfo {
+            display: none; 
+        }
+    }
+}
