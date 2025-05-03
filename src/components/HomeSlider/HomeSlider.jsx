@@ -14,15 +14,14 @@ export default function HomeSlider() {
           `https://marbudapi.onrender.com/api/silders?populate=*`
         );
         const data = await res.json();
-
         const formattedData = data.data.map((item) => ({
           id: item.id,
-          description: item.attributes.description,
-          imageUrl: item.attributes.image?.data?.attributes?.url || "",
-          button: item.attributes.button,
-          path: item.attributes.path,
+          description: item.description,
+          imageUrl: item.image?.url,
+          imageUrlSmall: item.image?.formats?.small?.url,
+          button: item.button,
+          path: item.path,
         }));
-
         setDescriptionSlider(formattedData);
       } catch (err) {
         console.error(`Błąd pobierania danych:`, err);
