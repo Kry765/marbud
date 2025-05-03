@@ -24,7 +24,8 @@ export default function Gallery() {
           fetchData: (data) =>
             data
               .map((item) => ({
-                imageUrl: `http://localhost:1337${item.image?.url}`,
+                imageUrl: item.image?.url,
+                imageUrlSmall: item.image?.formats?.small?.url,
                 position: item.position,
               }))
               .sort((a, b) => a.position - b.position),

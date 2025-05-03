@@ -38,8 +38,8 @@ export default function Homepage() {
               .map((item) => ({
                 title: item.title,
                 description: item.description,
-                imageUrl: `http://localhost:1337${item.image?.url}`,
-                imageUrlSmall: `http://localhost:1337${item.image?.url}?w=480&h=270&fit=crop`,
+                imageUrl: item.image?.url,
+                imageUrlSmall: item.image?.formats?.small?.url,
                 button: item.button,
                 position: item.position,
                 path: item.path,
