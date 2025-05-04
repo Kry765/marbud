@@ -6,7 +6,12 @@ import ImageListItemBar from "@mui/material/ImageListItemBar";
 import { useState } from "react";
 import gallery from "./gallery.module.scss";
 
-export default function GalleryComponent({ cols, photos, className }) {
+export default function GalleryComponent({
+  cols,
+  photos,
+  className,
+  mobileCols,
+}) {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [openIndex, setOpenIndex] = useState(-1);
 
@@ -25,6 +30,7 @@ export default function GalleryComponent({ cols, photos, className }) {
           cursor: "pointer",
         }}
         cols={cols}
+        mobileCols={mobileCols}
       >
         {photos.length > 0 ? (
           photos.map((item, index) => (

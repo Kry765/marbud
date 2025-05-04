@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import ScrollToTop from "./hooks/scrollToTop";
+import LoadingComponent from "./ui/LoadingComponent/LoadingComponent";
 
 const Homepage = lazy(() => import("./pages/Homepage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -18,7 +19,7 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<LoadingComponent />}>
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="*" element={<NotFound />} />

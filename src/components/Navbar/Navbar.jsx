@@ -100,7 +100,10 @@ export default function Navbar() {
       <div>
         {mobileMenu ? (
           <div className={navbar.mobileMenuItems}>
-            <Logo className={navbar.mobileLogo} />
+            <Link to="/" onClick={() => (window.location.href = "/")}>
+              <Logo className={navbar.mobileLogo} />
+            </Link>
+
             <div>
               {navData.menu.map((data, index) => (
                 <div className={navbar.mobileMenuItem}>

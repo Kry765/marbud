@@ -14,7 +14,6 @@
 }
 
 
-//social-icon
 .burgerIcon{
     z-index: 4;
     position: fixed;
@@ -41,6 +40,7 @@
 .mobileLogo{
     margin: -1.5em 1rem;
     padding-bottom: 2em;
+    z-index: 30;
 }
 
 .navScrolls{
@@ -62,7 +62,7 @@
     .mobileMenuItem{
         margin-top: 0.8em;
         padding: 1em 1.4em;
-        z-index: 10;
+        z-index: 30;
         text-decoration: none;
         color: #fff;
         &:hover{
