@@ -29,7 +29,7 @@ export default function OfffertsList({ domek, imageUrl }) {
         <div className={list.offertsSummerImageBox}>
           {imageUrl ? (
             <img
-              src={`http://localhost:1337${imageUrl}`}
+              src={`https://marbudapi.onrender.com${imageUrl}`}
               alt={domek.title}
               className={list.offertsSummerImage}
             />
