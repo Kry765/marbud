@@ -1,7 +1,8 @@
 import hero from "./hero.module.scss";
 import Subtitle from "../../ui/Subtitle/Subtitile";
 import ButtonAction from "../../ui/ButtonAction/ButtonAction";
-import React, { useEffect } from "react";
+import React from "react";
+import ReactMarkdown from "react-markdown";
 
 export default function HeroSecion({ data, isReverse, showButton = true }) {
   return (
@@ -12,10 +13,9 @@ export default function HeroSecion({ data, isReverse, showButton = true }) {
     >
       <div className={hero.findStyleWrapper}>
         <Subtitle>{data.title}</Subtitle>
-        <div
-          className={hero.findStyleDescription}
-          dangerouslySetInnerHTML={{ __html: data.description }}
-        />
+        <div className={hero.findStyleDescription}>
+          <ReactMarkdown>{data.description}</ReactMarkdown>
+        </div>
         <div className={hero.findStyleBtn}>
           {showButton && data.button && (
             <ButtonAction to={data.path}>{data.button}</ButtonAction>
