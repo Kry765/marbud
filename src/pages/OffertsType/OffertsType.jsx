@@ -14,7 +14,7 @@ export default function OffertsType() {
   const { type } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:1337/api/${type}`)
+    fetch(`https://marbudapi.onrender.com/api/${type}?populate=*`)
       .then((res) => res.json())
       .then((data) => {
         setDomki(data.data);
@@ -31,23 +31,30 @@ export default function OffertsType() {
         <HomeSlider />
       </header>
       <main className="page-wrapper">
-        <h2 className={offertsType.subtitle}>
-          OFERTA -{" "}
+        <Subtitle className={offertsType.subtitle}>
+          oferta -{" "}
           <span className={offertsType.title}>
             {type === "domki-letniskowes"
               ? "Domki Letniskowe"
               : "Domki Całoroczne"}
           </span>
-        </h2>
+        </Subtitle>
         <section>
           {domki.map((domek) => {
-            const imageUrl = domek.mainImage?.url;
+            const imageUrl =
+              domek.image?.url ||
+              (domek.image?.data?.attributes?.url
+                ? `https://res.cloudinary.com/dthrbelf6/image/upload/${domek.image.data.attributes.url}`
+                : null);
+
+            console.log("Rendering domek:", domek.id, "Image URL:", imageUrl);
             return (
               <OfffertsList
                 key={domek.id}
                 domek={domek}
                 imageUrl={imageUrl}
                 type={type}
+                id={domek.id}
               />
             );
           })}

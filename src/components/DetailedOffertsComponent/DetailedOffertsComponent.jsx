@@ -11,11 +11,15 @@ export default function DetailedOffertsComponent() {
   const [domek, setDomek] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:1337/api/${type}`)
+    fetch(`https://marbudapi.onrender.com/api/${type}?populate=*`)
       .then((res) => res.json())
       .then((data) => {
         const domekZnaleziony = data.data.find((el) => el.id === Number(id));
         setDomek(domekZnaleziony);
+        console.log(
+          "Dane domek.galleryOfferts: ",
+          domekZnaleziony?.galleryOfferts
+        );
       })
       .catch((err) =>
         console.error("Błąd podczas pobierania szczegółów:", err)
@@ -24,7 +28,21 @@ export default function DetailedOffertsComponent() {
 
   if (!domek) return <p>Ładowanie...</p>;
 
-  const imageUrl = domek.mainImage?.url;
+  const mainImageUrl =
+    domek.image?.url ||
+    (domek.image?.data?.attributes?.url
+      ? `https://res.cloudinary.com/dthrbelf6/image/upload/${domek.image.data.attributes.url}`
+      : null);
+
+  const galleryImages =
+    domek.galleryOfferts?.map((item) => ({
+      imageUrl:
+        item.formats?.medium?.url ||
+        item.formats?.large?.url ||
+        item.formats?.small?.url ||
+        null,
+      title: item.alternativeText || "Brak opisu",
+    })) || [];
 
   return (
     <div className={detailed.main}>
@@ -42,33 +60,38 @@ export default function DetailedOffertsComponent() {
         </div>
 
         <div className={detailed.mainImgBox}>
-          {imageUrl ? (
+          {mainImageUrl ? (
             <img
-              src={`http://localhost:1337${imageUrl}`}
+              src={mainImageUrl}
               className={detailed.mainImg}
               alt={domek.title}
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = "/placeholder.jpg";
+              }}
             />
           ) : (
             <p>Brak obrazka</p>
           )}
         </div>
       </div>
+
       <div className={detailed.descriptionBox}>
-        {" "}
         <h3 className={detailed.title}>Specyfikacja</h3>
         <ReactMarkdown>{domek.specificationDescription}</ReactMarkdown>
-        {domek.image && domek.image.length > 0 && (
+
+        {galleryImages.length > 0 ? (
           <GalleryComponent
             cols={5}
-            photos={domek.image.map((img) => ({
-              imageUrl: `http://localhost:1337${img.url}`,
-              title: img.alternativeText || "Brak opisu",
-            }))}
+            photos={galleryImages.filter((img) => img.imageUrl)}
           />
+        ) : (
+          <p>Brak galerii</p>
         )}
       </div>
+
       <div className={detailed.buttonOfferts}>
-        <ButtonAction to="../kontakt"> kontakt</ButtonAction>
+        <ButtonAction to="../kontakt">Kontakt</ButtonAction>
       </div>
     </div>
   );

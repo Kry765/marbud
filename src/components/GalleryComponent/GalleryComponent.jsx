@@ -40,7 +40,7 @@ export default function GalleryComponent({ cols, photos, className }) {
                 loading="lazy"
               />
               <ImageListItemBar
-                title={item.title || "Obrazek"}
+                title={item.title || `Realizacja marbud`}
                 className={`${gallery.hoverBar} ${
                   hoveredIndex === index ? gallery.active : ""
                 }`}

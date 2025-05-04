@@ -1,9 +1,9 @@
 import list from "./list.module.scss";
 import ButtonAction from "../../ui/ButtonAction/ButtonAction.jsx";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 
-export default function OfffertsList({ domek, imageUrl }) {
-  const { type } = useParams();
+export default function OfffertsList({ domek, imageUrl, type, id }) {
+  // const { type } = useParams();
 
   return (
     <>
@@ -14,7 +14,7 @@ export default function OfffertsList({ domek, imageUrl }) {
         data-aos-easing="ease-in-sine"
       >
         <div className={list.offertsSummerDescription}>
-          <h3>{domek.title}</h3>
+          <h3>{domek?.title}</h3>
           <p>Ilość pomieszczeń: {domek.roomCount}</p>
           <p>Materiały: {domek.materials}</p>
           <p>Izolacja: {domek.isolation}</p>
@@ -29,7 +29,7 @@ export default function OfffertsList({ domek, imageUrl }) {
         <div className={list.offertsSummerImageBox}>
           {imageUrl ? (
             <img
-              src={`https://marbudapi.onrender.com${imageUrl}`}
+              src={imageUrl}
               alt={domek.title}
               className={list.offertsSummerImage}
             />

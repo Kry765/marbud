@@ -21,7 +21,8 @@ export default function Technology() {
               .map((item) => ({
                 title: item.title,
                 description: item.description,
-                imageUrl: `http://localhost:1337${item.image?.url}`,
+                imageUrl: item.image?.url,
+                imageUrlSmall: item.image?.formats?.small?.url,
                 button: item.button,
                 path: item.path,
                 position: item.position,

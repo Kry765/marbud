@@ -4,6 +4,7 @@ import ButtonAction from "../../ui/ButtonAction/ButtonAction.jsx";
 import { useState, useEffect } from "react";
 import { getStrapiData } from "../../hooks/getStrapiData.jsx";
 import IconComponent from "../../ui/IconComponent/IconComponent.jsx";
+import ReactMarkdown from "react-markdown";
 
 export default function WhyMarbudSection() {
   const [whyMarbud, setWhyMarbud] = useState([]);
@@ -63,7 +64,7 @@ export default function WhyMarbudSection() {
                       name={item.icon}
                       className={why.marbudIcon}
                     />
-                    <p>{item.description}</p>
+                    <ReactMarkdown>{item.description}</ReactMarkdown>
                   </>
                 )}
               </div>

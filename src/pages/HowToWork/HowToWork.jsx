@@ -3,10 +3,13 @@ import HomeSlider from "../../components/HomeSlider/HomeSlider.jsx";
 import AllRightReserved from "../../components/AllRightReserved/AllRightReserved.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
 import Subtitle from "../../ui/Subtitle/Subtitile.jsx";
+import "../../scss/main.scss";
 import how from "./how.module.scss";
 import { getStrapiData } from "../../hooks/getStrapiData.jsx";
 import { useEffect, useState } from "react";
 import IconComponent from "../../ui/IconComponent/IconComponent.jsx";
+import ReactMarkdown from "react-markdown";
+import ButtonAction from "../../ui/ButtonAction/ButtonAction.jsx";
 
 export default function HowToWork() {
   const [howDatas, setHowDatas] = useState({
@@ -23,6 +26,7 @@ export default function HowToWork() {
                 icon: item.icon,
                 description: item.description,
                 position: item.position,
+                title: item.title,
               }))
               .sort((a, b) => a.position - b.position);
             return sortedData;
@@ -57,11 +61,19 @@ export default function HowToWork() {
                 name={data.icon}
                 className={how.howToWorkIcon}
               ></IconComponent>
-              <div className={how.howToWorkDescription}>{data.description}</div>
+              <>
+                <div className={how.howToWorkDescription}>
+                  <h2 className={how.howToWorkTitle}>{data.title}</h2>
+                  <ReactMarkdown>{data.description}</ReactMarkdown>
+                </div>
+              </>
             </div>
           ))}
         </div>
       </main>
+      <div className="title-margin">
+        <ButtonAction>Skontaktuj się z nami!</ButtonAction>
+      </div>
       <footer>
         <Footer />
         <AllRightReserved />
