@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
 import GalleryComponent from "../GalleryComponent/GalleryComponent";
 import { useParams } from "react-router-dom";
 import ButtonAction from "../../ui/ButtonAction/ButtonAction";
 import detailed from "./detailed.module.scss";
+import Subtitle from "../../ui/Subtitle/Subtitile";
 
 export default function DetailedOffertsComponent() {
   const { id, type } = useParams();
   const [domek, setDomek] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:1337/api/${type}?populate=*`)
+    fetch(`http://localhost:1337/api/${type}`)
       .then((res) => res.json())
       .then((data) => {
         const domekZnaleziony = data.data.find((el) => el.id === Number(id));
@@ -28,7 +30,7 @@ export default function DetailedOffertsComponent() {
     <div className={detailed.main}>
       <div className={detailed.descriptionWrapper}>
         <div className={detailed.descriptionBox}>
-          <h2 className={detailed.title}>{domek.title}</h2>
+          <Subtitle className={detailed.title}>{domek.title}</Subtitle>
           <ul className={detailed.specificationDescription}>
             <li>Ilość pomieszczeń: {domek.roomCount}</li>
             <li>Materiały: {domek.materials}</li>
@@ -36,9 +38,7 @@ export default function DetailedOffertsComponent() {
             <li>Powierzchnia: {domek.area}</li>
             <li>Cena: {domek.price}</li>
           </ul>
-          <p className={detailed.specificationDescription}>
-            {domek.description}
-          </p>
+          <ReactMarkdown>{domek.description}</ReactMarkdown>
         </div>
 
         <div className={detailed.mainImgBox}>
@@ -53,20 +53,20 @@ export default function DetailedOffertsComponent() {
           )}
         </div>
       </div>
-      <h3 className={detailed.title}>Specyfikacja</h3>
-      <div
-        dangerouslySetInnerHTML={{ __html: domek.specification }}
-        className={detailed.specificationDescription}
-      />
-      {domek.image && domek.image.length > 0 && (
-        <GalleryComponent
-          cols={5}
-          photos={domek.image.map((img) => ({
-            imageUrl: `http://localhost:1337${img.url}`,
-            title: img.alternativeText || "Brak opisu",
-          }))}
-        />
-      )}
+      <div className={detailed.descriptionBox}>
+        {" "}
+        <h3 className={detailed.title}>Specyfikacja</h3>
+        <ReactMarkdown>{domek.specificationDescription}</ReactMarkdown>
+        {domek.image && domek.image.length > 0 && (
+          <GalleryComponent
+            cols={5}
+            photos={domek.image.map((img) => ({
+              imageUrl: `http://localhost:1337${img.url}`,
+              title: img.alternativeText || "Brak opisu",
+            }))}
+          />
+        )}
+      </div>
       <div className={detailed.buttonOfferts}>
         <ButtonAction to="../kontakt"> kontakt</ButtonAction>
       </div>

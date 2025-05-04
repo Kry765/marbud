@@ -1,7 +1,7 @@
 .contactWrapper {
     display: flex;
     justify-content: space-between;
-    margin: 0;
+    margin: 2em 0;
     .formBox {
         background: #fff;
         box-shadow: 0 2px 15px rgba(0,0,0,0.08);
@@ -99,13 +99,16 @@
     .contactWrapper {
         align-items: center;
         flex-direction: column;
+        padding: 0; 
         
         .formBox, .formInfo {
             width: 100%;
+            margin: 0; 
         }
-    
+
         .formInfo {
             display: none; 
+            background-color: transparent; 
         }
     }
 }

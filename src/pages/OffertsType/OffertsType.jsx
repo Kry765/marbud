@@ -14,7 +14,7 @@ export default function OffertsType() {
   const { type } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:1337/api/${type}?populate=mainImage`)
+    fetch(`http://localhost:1337/api/${type}`)
       .then((res) => res.json())
       .then((data) => {
         setDomki(data.data);
@@ -31,14 +31,14 @@ export default function OffertsType() {
         <HomeSlider />
       </header>
       <main className="page-wrapper">
-        <Subtitle className={offertsType.subtitle}>
-          oferta -{" "}
+        <h2 className={offertsType.subtitle}>
+          OFERTA -{" "}
           <span className={offertsType.title}>
             {type === "domki-letniskowes"
               ? "Domki Letniskowe"
               : "Domki Całoroczne"}
           </span>
-        </Subtitle>
+        </h2>
         <section>
           {domki.map((domek) => {
             const imageUrl = domek.mainImage?.url;
