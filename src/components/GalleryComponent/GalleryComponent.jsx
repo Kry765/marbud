@@ -4,16 +4,21 @@ import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
 import { useState } from "react";
+import { useLocation } from "react-router-dom"; // Dodane
 import gallery from "./gallery.module.scss";
 
 export default function GalleryComponent({ photos, className }) {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [openIndex, setOpenIndex] = useState(-1);
+  const location = useLocation(); // Hook do wykrywania ścieżki URL
 
   const slides = photos.map((item) => ({
     src: item.imageUrl,
-    alt: item.title || "Obrazek",
+    alt: item.alternativeText || "Obrazek", // Alt z alternativeText
   }));
+
+  // Załóżmy, że chcesz pokazywać pasek TYLKO na stronie "/galeria"
+  const showTitleBar = location.pathname === "/galeria";
 
   return (
     <div className={`${gallery.galleryBox} ${className || ""}`}>
@@ -34,7 +39,7 @@ export default function GalleryComponent({ photos, className }) {
             >
               <img
                 src={item.imageUrl}
-                alt={item.title || "Obrazek"}
+                alt={item.alternativeText || "Obrazek"} // Tutaj też z alternativeText
                 loading="lazy"
                 style={{
                   width: "100%",
@@ -42,12 +47,14 @@ export default function GalleryComponent({ photos, className }) {
                   objectFit: "cover",
                 }}
               />
-              <ImageListItemBar
-                title={item.title || `Realizacja marbud`}
-                className={`${gallery.hoverBar} ${
-                  hoveredIndex === index ? gallery.active : ""
-                }`}
-              />
+              {showTitleBar && (
+                <ImageListItemBar
+                  title={item.alternativeText || "Realizacja marbud"} // Zawsze z alternativeText
+                  className={`${gallery.hoverBar} ${
+                    hoveredIndex === index ? gallery.active : ""
+                  }`}
+                />
+              )}
             </ImageListItem>
           ))
         ) : (
