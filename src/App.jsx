@@ -22,7 +22,6 @@ function App() {
       <Suspense fallback={<LoadingComponent />}>
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="*" element={<NotFound />} />
           <Route path="/technologia" element={<Technology />} />
           <Route path="/kontakt" element={<Contact />} />
           <Route path="/galeria" element={<Gallery />} />
@@ -30,6 +29,7 @@ function App() {
           <Route path="/oferta" element={<Offerts />} />
           <Route path="/oferta/:type" element={<OffertsType />} />
           <Route path="/oferta/:type/:id" element={<DetailedOffertsPage />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
     </Router>
