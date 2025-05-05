@@ -22,7 +22,8 @@ export default function Gallery() {
     const loadData = async () => {
       try {
         const photos = await getStrapiData({
-          endpoint: "galerias?populate=image",
+          endpoint:
+            "galerias?populate=image&pagination[page]=1&pagination[pageSize]=100&sort=position:asc",
           fetchData: (data) =>
             data
               .map((item) => ({
