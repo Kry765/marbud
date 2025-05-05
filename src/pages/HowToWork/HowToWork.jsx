@@ -11,6 +11,7 @@ import IconComponent from "../../ui/IconComponent/IconComponent.jsx";
 import ReactMarkdown from "react-markdown";
 import ButtonAction from "../../ui/ButtonAction/ButtonAction.jsx";
 import LoadingComponent from "../../ui/LoadingComponent/LoadingComponent.jsx";
+import { Suspense } from "react";
 
 export default function HowToWork() {
   const [howDatas, setHowDatas] = useState({
