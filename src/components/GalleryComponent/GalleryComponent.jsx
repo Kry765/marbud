@@ -6,12 +6,7 @@ import ImageListItemBar from "@mui/material/ImageListItemBar";
 import { useState } from "react";
 import gallery from "./gallery.module.scss";
 
-export default function GalleryComponent({
-  cols,
-  photos,
-  className,
-  mobileCols,
-}) {
+export default function GalleryComponent({ photos, className }) {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [openIndex, setOpenIndex] = useState(-1);
 
@@ -21,22 +16,8 @@ export default function GalleryComponent({
   }));
 
   return (
-    <div className={gallery.galleryBox}>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gap: "16px",
-        }}
-      >
-        {photos.map((item, index) => (
-          <div key={index} style={{ aspectRatio: "4/3" }}>
-            <img
-              src={item.imageUrl}
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
-            />
-          </div>
-        ))}
+    <div className={`${gallery.galleryBox} ${className || ""}`}>
+      <ImageList cols={3} gap={16}>
         {photos.length > 0 ? (
           photos.map((item, index) => (
             <ImageListItem
@@ -45,9 +26,10 @@ export default function GalleryComponent({
               onMouseLeave={() => setHoveredIndex(null)}
               onClick={() => setOpenIndex(index)}
               sx={{
-                aspectRatio: "4/3", // Utrzymaj proporcje
+                aspectRatio: "4/3",
                 overflow: "hidden",
                 borderRadius: "8px",
+                cursor: "pointer",
               }}
             >
               <img
@@ -71,7 +53,7 @@ export default function GalleryComponent({
         ) : (
           <p>Brak obrazków</p>
         )}
-      </div>
+      </ImageList>
 
       <Lightbox
         open={openIndex !== -1}
