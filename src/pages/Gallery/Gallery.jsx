@@ -27,6 +27,7 @@ export default function Gallery() {
                 imageUrl: item.image?.url,
                 imageUrlSmall: item.image?.formats?.small?.url,
                 position: item.position,
+                title: item.title,
               }))
               .sort((a, b) => a.position - b.position),
         });
@@ -67,7 +68,6 @@ export default function Gallery() {
               className={mainGallery.galleryView}
               photos={galleryData.photos}
               cols={3}
-              // mobileCols={1}
               style={{
                 maxWidth: "1200px",
                 margin: "0 auto",

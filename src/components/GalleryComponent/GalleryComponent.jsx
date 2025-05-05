@@ -4,20 +4,19 @@ import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
 import { useState } from "react";
-import { useLocation } from "react-router-dom"; // Dodane
+import { useLocation } from "react-router-dom";
 import gallery from "./gallery.module.scss";
 
 export default function GalleryComponent({ photos, className }) {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [openIndex, setOpenIndex] = useState(-1);
-  const location = useLocation(); // Hook do wykrywania ścieżki URL
+  const location = useLocation();
 
   const slides = photos.map((item) => ({
     src: item.imageUrl,
-    alt: item.alternativeText || "Obrazek", // Alt z alternativeText
+    alt: item.alternativeText,
   }));
 
-  // Załóżmy, że chcesz pokazywać pasek TYLKO na stronie "/galeria"
   const showTitleBar = location.pathname === "/galeria";
 
   return (
@@ -39,7 +38,7 @@ export default function GalleryComponent({ photos, className }) {
             >
               <img
                 src={item.imageUrl}
-                alt={item.alternativeText || "Obrazek"} // Tutaj też z alternativeText
+                alt={item.title || "Obrazek"}
                 loading="lazy"
                 style={{
                   width: "100%",
@@ -49,7 +48,7 @@ export default function GalleryComponent({ photos, className }) {
               />
               {showTitleBar && (
                 <ImageListItemBar
-                  title={item.alternativeText || "Realizacja marbud"} // Zawsze z alternativeText
+                  title={item.title || "Realizacja marbud"}
                   className={`${gallery.hoverBar} ${
                     hoveredIndex === index ? gallery.active : ""
                   }`}
