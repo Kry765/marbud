@@ -72,7 +72,7 @@ export default function HowToWork() {
         </div>
       </main>
       <div className="title-margin">
-        <ButtonAction>Skontaktuj się z nami!</ButtonAction>
+        <ButtonAction to="../kontakt">Skontaktuj się z nami!</ButtonAction>
       </div>
       <footer>
         <Footer />

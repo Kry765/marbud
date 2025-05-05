@@ -65,9 +65,13 @@ export default function Gallery() {
           <div>
             <GalleryComponent
               className={mainGallery.galleryView}
-              galleryStyle={galleryStyle}
               photos={galleryData.photos}
               cols={3}
+              // mobileCols={1}
+              style={{
+                maxWidth: "1200px",
+                margin: "0 auto",
+              }}
             />
           </div>
         </figure>

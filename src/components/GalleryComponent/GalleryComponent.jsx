@@ -22,16 +22,21 @@ export default function GalleryComponent({
 
   return (
     <div className={gallery.galleryBox}>
-      <ImageList
-        className={className}
-        sx={{
-          height: "auto",
-          overflow: "hidden",
-          cursor: "pointer",
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
+          gap: "16px",
         }}
-        cols={cols}
-        mobileCols={mobileCols}
       >
+        {photos.map((item, index) => (
+          <div key={index} style={{ aspectRatio: "4/3" }}>
+            <img
+              src={item.imageUrl}
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            />
+          </div>
+        ))}
         {photos.length > 0 ? (
           photos.map((item, index) => (
             <ImageListItem
@@ -39,11 +44,21 @@ export default function GalleryComponent({
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
               onClick={() => setOpenIndex(index)}
+              sx={{
+                aspectRatio: "4/3", // Utrzymaj proporcje
+                overflow: "hidden",
+                borderRadius: "8px",
+              }}
             >
               <img
                 src={item.imageUrl}
                 alt={item.title || "Obrazek"}
                 loading="lazy"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                }}
               />
               <ImageListItemBar
                 title={item.title || `Realizacja marbud`}
@@ -56,7 +71,7 @@ export default function GalleryComponent({
         ) : (
           <p>Brak obrazków</p>
         )}
-      </ImageList>
+      </div>
 
       <Lightbox
         open={openIndex !== -1}
