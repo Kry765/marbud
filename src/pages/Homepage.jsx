@@ -13,6 +13,8 @@ import { getStrapiData } from "../hooks/getStrapiData.jsx";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Subtitle from "../ui/Subtitle/Subtitile.jsx";
+import LoadingComponent from "../ui/LoadingComponent/LoadingComponent.jsx";
+import { Suspense } from "react";
 
 export default function Homepage() {
   const [homepageData, setHomepageData] = useState({
@@ -62,44 +64,46 @@ export default function Homepage() {
 
   return (
     <>
-      <nav>
-        <Navbar />
-      </nav>
-      <header>
-        <HomeSlider />
-      </header>
-      <main>
-        <WhyMarbudSection />
-        {homepageData.homepage.map((data, index) => (
-          <article key={index} className={index % 2 === 1 ? "reverse" : ""}>
-            <HeroSection
-              data={data}
-              isReverse={index % 2 === 1}
-              showButton={data.button}
-            />
-          </article>
-        ))}
-        <figure>
-          <section className="page-wrapper">
-            <ContactForm />
-          </section>
-          <section
-            className="page-wrapper"
-            data-aos="fade-right"
-            data-aos-easing="ease-in-sine"
-          >
-            <Subtitle className="title-margin">
-              Znajdziesz nas <span className="title-color">tutaj!</span>
-            </Subtitle>
-            <GoogleMaps />
-          </section>
-        </figure>
-      </main>
+      <Suspense fallback={<LoadingComponent />}>
+        <nav>
+          <Navbar />
+        </nav>
+        <header>
+          <HomeSlider />
+        </header>
+        <main>
+          <WhyMarbudSection />
+          {homepageData.homepage.map((data, index) => (
+            <article key={index} className={index % 2 === 1 ? "reverse" : ""}>
+              <HeroSection
+                data={data}
+                isReverse={index % 2 === 1}
+                showButton={data.button}
+              />
+            </article>
+          ))}
+          <figure>
+            <section className="page-wrapper">
+              <ContactForm />
+            </section>
+            <section
+              className="page-wrapper"
+              data-aos="fade-right"
+              data-aos-easing="ease-in-sine"
+            >
+              <Subtitle className="title-margin">
+                Znajdziesz nas <span className="title-color">tutaj!</span>
+              </Subtitle>
+              <GoogleMaps />
+            </section>
+          </figure>
+        </main>
 
-      <footer>
-        <Footer />
-        <AllRightReserved />
-      </footer>
+        <footer>
+          <Footer />
+          <AllRightReserved />
+        </footer>
+      </Suspense>
     </>
   );
 }

@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import IconComponent from "../../ui/IconComponent/IconComponent.jsx";
 import ReactMarkdown from "react-markdown";
 import ButtonAction from "../../ui/ButtonAction/ButtonAction.jsx";
+import LoadingComponent from "../../ui/LoadingComponent/LoadingComponent.jsx";
 
 export default function HowToWork() {
   const [howDatas, setHowDatas] = useState({
@@ -46,38 +47,40 @@ export default function HowToWork() {
 
   return (
     <>
-      <nav>
-        <Navbar />
-      </nav>
-      <header>
-        <HomeSlider />
-      </header>
-      <main data-aos="fade-right" data-aos-easing="ease-in-sine">
-        <Subtitle className={how.title}>Jak działamy</Subtitle>
-        <div className={how.container}>
-          {howDatas.howdata.map((data, index) => (
-            <div className={how.box} key={index}>
-              <IconComponent
-                name={data.icon}
-                className={how.howToWorkIcon}
-              ></IconComponent>
-              <>
-                <div className={how.howToWorkDescription}>
-                  <h2 className={how.howToWorkTitle}>{data.title}</h2>
-                  <ReactMarkdown>{data.description}</ReactMarkdown>
-                </div>
-              </>
-            </div>
-          ))}
+      <Suspense fallback={<LoadingComponent />}>
+        <nav>
+          <Navbar />
+        </nav>
+        <header>
+          <HomeSlider />
+        </header>
+        <main data-aos="fade-right" data-aos-easing="ease-in-sine">
+          <Subtitle className={how.title}>Jak działamy</Subtitle>
+          <div className={how.container}>
+            {howDatas.howdata.map((data, index) => (
+              <div className={how.box} key={index}>
+                <IconComponent
+                  name={data.icon}
+                  className={how.howToWorkIcon}
+                ></IconComponent>
+                <>
+                  <div className={how.howToWorkDescription}>
+                    <h2 className={how.howToWorkTitle}>{data.title}</h2>
+                    <ReactMarkdown>{data.description}</ReactMarkdown>
+                  </div>
+                </>
+              </div>
+            ))}
+          </div>
+        </main>
+        <div className="title-margin">
+          <ButtonAction to="../kontakt">Skontaktuj się z nami!</ButtonAction>
         </div>
-      </main>
-      <div className="title-margin">
-        <ButtonAction to="../kontakt">Skontaktuj się z nami!</ButtonAction>
-      </div>
-      <footer>
-        <Footer />
-        <AllRightReserved />
-      </footer>
+        <footer>
+          <Footer />
+          <AllRightReserved />
+        </footer>
+      </Suspense>
     </>
   );
 }

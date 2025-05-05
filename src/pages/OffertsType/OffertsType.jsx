@@ -8,6 +8,8 @@ import Subtitle from "../../ui/Subtitle/Subtitile.jsx";
 import OfffertsList from "../../components/OffertsList/OffertsList.jsx";
 import offertsType from "./offertsType.module.scss";
 import "../../scss/main.scss";
+import LoadingComponent from "../../ui/LoadingComponent/LoadingComponent.jsx";
+import { Suspense } from "react";
 
 export default function OffertsType() {
   const [domki, setDomki] = useState([]);
@@ -24,46 +26,49 @@ export default function OffertsType() {
 
   return (
     <>
-      <nav>
-        <Navbar />
-      </nav>
-      <header>
-        <HomeSlider />
-      </header>
-      <main className="page-wrapper">
-        <Subtitle className={offertsType.subtitle}>
-          oferta -{" "}
-          <span className={offertsType.title}>
-            {type === "domki-letniskowes"
-              ? "Domki Letniskowe"
-              : "Domki Całoroczne"}
-          </span>
-        </Subtitle>
-        <section>
-          {domki.map((domek) => {
-            const imageUrl =
-              domek.image?.url ||
-              (domek.image?.data?.attributes?.url
-                ? `https://res.cloudinary.com/dthrbelf6/image/upload/${domek.image.data.attributes.url}`
-                : null);
+      {" "}
+      <Suspense fallback={<LoadingComponent />}>
+        <nav>
+          <Navbar />
+        </nav>
+        <header>
+          <HomeSlider />
+        </header>
+        <main className="page-wrapper">
+          <Subtitle className={offertsType.subtitle}>
+            oferta -{" "}
+            <span className={offertsType.title}>
+              {type === "domki-letniskowes"
+                ? "Domki Letniskowe"
+                : "Domki Całoroczne"}
+            </span>
+          </Subtitle>
+          <section>
+            {domki.map((domek) => {
+              const imageUrl =
+                domek.image?.url ||
+                (domek.image?.data?.attributes?.url
+                  ? `https://res.cloudinary.com/dthrbelf6/image/upload/${domek.image.data.attributes.url}`
+                  : null);
 
-            console.log("Rendering domek:", domek.id, "Image URL:", imageUrl);
-            return (
-              <OfffertsList
-                key={domek.id}
-                domek={domek}
-                imageUrl={imageUrl}
-                type={type}
-                id={domek.id}
-              />
-            );
-          })}
-        </section>
-      </main>
-      <footer>
-        <Footer />
-        <AllRightReserved />
-      </footer>
+              console.log("Rendering domek:", domek.id, "Image URL:", imageUrl);
+              return (
+                <OfffertsList
+                  key={domek.id}
+                  domek={domek}
+                  imageUrl={imageUrl}
+                  type={type}
+                  id={domek.id}
+                />
+              );
+            })}
+          </section>
+        </main>
+        <footer>
+          <Footer />
+          <AllRightReserved />
+        </footer>
+      </Suspense>
     </>
   );
 }

@@ -8,7 +8,8 @@ import { offertsData } from "../../data/offertsData.json";
 import houseSummer from "../../assets/offertsPhoto/domek_sezonowy.jpg";
 import houseYearRound from "../../assets/offertsPhoto/domek_caloroczny.jpg";
 import offerts from "./offerts.module.scss";
-
+import LoadingComponent from "../../ui/LoadingComponent/LoadingComponent.jsx";
+import { Suspense } from "react";
 const houseTypes = [
   {
     path: "/oferta/domki-letniskowes",
@@ -27,43 +28,45 @@ const houseTypes = [
 export default function Offerts() {
   return (
     <>
-      <nav>
-        <Navbar />
-      </nav>
-      <header>
-        <HomeSlider />
-      </header>
-      <main data-aos="fade-right" data-aos-easing="ease-in-sine">
-        <Subtitle className={offerts.title}>{offertsData[0].title}</Subtitle>
-        <article>
-          <p className={offerts.description}>{offertsData[0].description}</p>
-        </article>
-        <article>
-          <p className={offerts.details}>{offertsData[0].details}</p>
-        </article>
-        <div className={offerts.photoOffertsBox}>
-          {houseTypes.map((house, index) => (
-            <Link key={index} to={house.path}>
-              <div className={offerts.photoOffertWrapper}>
-                <img
-                  className={offerts.photoOffertsButton}
-                  src={house.image}
-                  alt={house.alt}
-                />
-                <div className={offerts.photoOffertsOpacity}>
-                  <p className={offerts.photoOffertsDescription}>
-                    {house.description}
-                  </p>
+      <Suspense fallback={<LoadingComponent />}>
+        <nav>
+          <Navbar />
+        </nav>
+        <header>
+          <HomeSlider />
+        </header>
+        <main data-aos="fade-right" data-aos-easing="ease-in-sine">
+          <Subtitle className={offerts.title}>{offertsData[0].title}</Subtitle>
+          <article>
+            <p className={offerts.description}>{offertsData[0].description}</p>
+          </article>
+          <article>
+            <p className={offerts.details}>{offertsData[0].details}</p>
+          </article>
+          <div className={offerts.photoOffertsBox}>
+            {houseTypes.map((house, index) => (
+              <Link key={index} to={house.path}>
+                <div className={offerts.photoOffertWrapper}>
+                  <img
+                    className={offerts.photoOffertsButton}
+                    src={house.image}
+                    alt={house.alt}
+                  />
+                  <div className={offerts.photoOffertsOpacity}>
+                    <p className={offerts.photoOffertsDescription}>
+                      {house.description}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </main>
-      <footer>
-        <Footer />
-        <AllRightReserved />
-      </footer>
+              </Link>
+            ))}
+          </div>
+        </main>
+        <footer>
+          <Footer />
+          <AllRightReserved />
+        </footer>
+      </Suspense>
     </>
   );
 }
