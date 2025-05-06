@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import ScrollToTop from "./hooks/scrollToTop";
 import LoadingComponent from "./ui/LoadingComponent/LoadingComponent";
+import CookieConsentComponent from "./components/CookieConsentComponent/CookieConsentComponent";
 
 const Homepage = lazy(() => import("./pages/Homepage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -17,22 +18,25 @@ const DetailedOffertsPage = lazy(() =>
 
 function App() {
   return (
-    <Router>
-      <ScrollToTop />
-      <Suspense fallback={<LoadingComponent />}>
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/technologia" element={<Technology />} />
-          <Route path="/kontakt" element={<Contact />} />
-          <Route path="/galeria" element={<Gallery />} />
-          <Route path="/jak-dzialamy" element={<HowToWork />} />
-          <Route path="/oferta" element={<Offerts />} />
-          <Route path="/oferta/:type" element={<OffertsType />} />
-          <Route path="/oferta/:type/:id" element={<DetailedOffertsPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Suspense>
-    </Router>
+    <>
+      <CookieConsentComponent />
+      <Router>
+        <ScrollToTop />
+        <Suspense fallback={<LoadingComponent />}>
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/technologia" element={<Technology />} />
+            <Route path="/kontakt" element={<Contact />} />
+            <Route path="/galeria" element={<Gallery />} />
+            <Route path="/jak-dzialamy" element={<HowToWork />} />
+            <Route path="/oferta" element={<Offerts />} />
+            <Route path="/oferta/:type" element={<OffertsType />} />
+            <Route path="/oferta/:type/:id" element={<DetailedOffertsPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
+      </Router>
+    </>
   );
 }
 

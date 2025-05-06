@@ -15,7 +15,7 @@ export default function GalleryComponent({ photos, className }) {
   const slides = photos.map((item) => ({
     src: item.imageUrl,
     alt: item.alternativeText,
-    title: item.title || "Realizacja marbud", // Dodajemy tytuł do slajdów
+    title: item.title || "Realizacja marbud",
   }));
 
   return (
