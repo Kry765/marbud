@@ -15,9 +15,8 @@ export default function GalleryComponent({ photos, className }) {
   const slides = photos.map((item) => ({
     src: item.imageUrl,
     alt: item.alternativeText,
+    title: item.title || "Realizacja marbud", // Dodajemy tytuł do slajdów
   }));
-
-  const showTitleBar = location.pathname === "/galeria";
 
   return (
     <div className={`${gallery.galleryBox} ${className || ""}`}>
@@ -46,14 +45,12 @@ export default function GalleryComponent({ photos, className }) {
                   objectFit: "cover",
                 }}
               />
-              {showTitleBar && (
-                <ImageListItemBar
-                  title={item.title || "Realizacja marbud"}
-                  className={`${gallery.hoverBar} ${
-                    hoveredIndex === index ? gallery.active : ""
-                  }`}
-                />
-              )}
+              <ImageListItemBar
+                title={item.title || "Realizacja marbud"}
+                className={`${gallery.hoverBar} ${
+                  hoveredIndex === index ? gallery.active : ""
+                }`}
+              />
             </ImageListItem>
           ))
         ) : (
@@ -66,6 +63,38 @@ export default function GalleryComponent({ photos, className }) {
         index={openIndex}
         close={() => setOpenIndex(-1)}
         slides={slides}
+        render={{
+          slide: ({ slide }) => (
+            <div style={{ position: "relative", height: "100%" }}>
+              <img
+                src={slide.src}
+                alt={slide.alt}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain",
+                }}
+              />
+              {slide.title && (
+                <div
+                  style={{
+                    position: "absolute",
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    padding: "16px",
+                    background:
+                      "linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, transparent 100%)",
+                    color: "white",
+                    textAlign: "center",
+                  }}
+                >
+                  {slide.title}
+                </div>
+              )}
+            </div>
+          ),
+        }}
       />
     </div>
   );

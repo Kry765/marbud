@@ -44,12 +44,13 @@ export default function DetailedOffertsComponent() {
 
   const galleryImages =
     domek.galleryOfferts?.map((item) => ({
+      title: item.title,
       imageUrl:
         item.formats?.medium?.url ||
         item.formats?.large?.url ||
         item.formats?.small?.url ||
         null,
-      title: item.alternativeText || "Brak opisu",
+      // title: item.alternativeText || "Brak opisu",
     })) || [];
 
   return (
@@ -109,6 +110,7 @@ export default function DetailedOffertsComponent() {
         {galleryImages.length > 0 ? (
           <GalleryComponent
             cols={3}
+            item={item}
             photos={galleryImages.filter((img) => img.imageUrl)}
           />
         ) : (
