@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Navbar from "../../components/Navbar/Navbar.jsx";
-import HomeSlider from "../../components/HomeSlider/HomeSlider.jsx";
-import AllRightReserved from "../../components/AllRightReserved/AllRightReserved.jsx";
-import Footer from "../../components/Footer/Footer.jsx";
-import Subtitle from "../../ui/Subtitle/Subtitile.jsx";
-import OfffertsList from "../../components/OffertsList/OffertsList.jsx";
-import offertsType from "./offertsType.module.scss";
-import "../../scss/main.scss";
-import LoadingComponent from "../../ui/LoadingComponent/LoadingComponent.jsx";
+import Navbar from "../components/Navbar/Navbar.jsx";
+import HomeSlider from "../components/HomeSlider/HomeSlider.jsx";
+import AllRightReserved from "../components/AllRightReserved/AllRightReserved.jsx";
+import Footer from "../components/Footer/Footer.jsx";
+import Subtitle from "../ui/Subtitle/Subtitile.jsx";
+import OfffertsList from "../components/OffertsList/OffertsList.jsx";
+import "../scss/main.scss";
+import LoadingComponent from "../ui/LoadingComponent/LoadingComponent.jsx";
 import { Suspense } from "react";
 
 export default function OffertsType() {
@@ -16,7 +15,7 @@ export default function OffertsType() {
   const { type } = useParams();
 
   useEffect(() => {
-    fetch(`https://marbudapi.onrender.com/api/${type}?populate=*`)
+    fetch(`http://85.215.50.235:1337/api/${type}?populate=*`)
       .then((res) => res.json())
       .then((data) => {
         setDomki(data.data);
@@ -35,9 +34,9 @@ export default function OffertsType() {
           <HomeSlider />
         </header>
         <main className="page-wrapper">
-          <Subtitle className={offertsType.subtitle}>
+          <Subtitle className="title-margin">
             oferta -{" "}
-            <span className={offertsType.title}>
+            <span className="title-color">
               {type === "domki-letniskowes"
                 ? "Domki Letniskowe"
                 : "Domki Całoroczne"}
@@ -50,8 +49,6 @@ export default function OffertsType() {
                 (domek.image?.data?.attributes?.url
                   ? `https://res.cloudinary.com/dthrbelf6/image/upload/${domek.image.data.attributes.url}`
                   : null);
-
-              console.log("Rendering domek:", domek.id, "Image URL:", imageUrl);
               return (
                 <OfffertsList
                   key={domek.id}

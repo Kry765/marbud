@@ -1,106 +1,91 @@
-import React, { useEffect, useState } from "react";
-import Slider from "react-slick";
+import React, { useEffect, useState, useRef } from "react";
 import Logo from "../../ui/Logo/Logo";
 import ButtonAction from "../../ui/ButtonAction/ButtonAction";
 import homeslider from "./homeslider.module.scss";
 
 export default function HomeSlider() {
-  const [descriptionSlider, setDescriptionSlider] = useState([]);
+  const sliderImage = [
+    {
+      src: "/image/domek_1.webp",
+      altText: "domek marbud",
+      title: "Nowoczesny Domek Marbud",
+      buttonText: "Zobacz więcej",
+      buttonLink: "/oferta/domek-marbud",
+    },
+    {
+      src: "/image/domek_2.webp",
+      altText: "domek całoroczny",
+      title: "Domek Całoroczny Premium",
+      buttonText: "Sprawdź ofertę",
+      buttonLink: "/oferta/domek-caloroczny",
+    },
+    {
+      src: "/image/domek_3.webp",
+      altText: "domek całoroczny",
+      title: "Nowa Kolekcja Domków",
+      buttonText: "Poznaj więcej",
+      buttonLink: "/kolekcja",
+    },
+    {
+      src: "/image/domek_4.webp",
+      altText: "domek całoroczny",
+      title: "Idealny na każdą porę roku",
+      buttonText: "Kontakt",
+      buttonLink: "/kontakt",
+    },
+  ];
+
+  const [current, setCurrent] = useState(0);
+  const timeoutRef = useRef(null);
+  const delay = 4000;
 
   useEffect(() => {
-    const loadData = async () => {
-      try {
-        const res = await fetch(
-          `https://marbudapi.onrender.com/api/silders?populate=*`
-        );
-        const data = await res.json();
-        const formattedData = data.data.map((item) => ({
-          id: item.id,
-          description: item.description,
-          imageUrl: item.image?.url,
-          imageUrlSmall: item.image?.formats?.small?.url,
-          button: item.button,
-          path: item.path,
-        }));
-        setDescriptionSlider(formattedData);
-      } catch (err) {
-        console.error(`Błąd pobierania danych:`, err);
-      }
-    };
+    resetTimeout();
+    timeoutRef.current = setTimeout(() => {
+      setCurrent((prev) => (prev === sliderImage.length - 1 ? 0 : prev + 1));
+    }, delay);
 
-    loadData();
-  }, []);
+    return () => resetTimeout();
+  }, [current]);
 
-  const settings = {
-    lazyLoad: true,
-    dots: true,
-    arrows: false,
-    infinite: true,
-    autoplay: true,
-    speed: 500,
-    autoplaySpeed: 5000,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    dotsClass: "slick-dots slick-thumb",
-    customPaging: () => (
-      <div
-        style={{
-          position: "absolute",
-          bottom: "150%",
-          width: "12px",
-          height: "12px",
-          backgroundColor: "#fff",
-          borderRadius: "50%",
-        }}
-      ></div>
-    ),
+  const resetTimeout = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
   };
 
-  if (!descriptionSlider.length) {
-    return <div style={{ height: "80vh" }}></div>;
-  }
-
   return (
-    <Slider {...settings} role="region" aria-label="Slider główny">
-      {descriptionSlider.map((data, index) => (
-        <div key={data.id}>
-          <div className={homeslider.slider}>
-            {index === 0 && (
-              <link
-                rel="preload"
-                href={data.imageUrl}
-                as="image"
-                type="image/webp"
-                media="(min-width: 768px)"
-              />
-            )}
-            <img
-              src={data.imageUrlSmall}
-              srcSet={`${data.imageUrlSmall} 480w, ${data.imageUrl} 1920w`}
-              sizes="(max-width: 480px) 480px, 1920px"
-              alt="homepage_slider"
-              className={homeslider.image}
-              width="1920"
-              height="1080"
-              loading={index === 0 ? "eager" : "lazy"}
-              fetchPriority="high"
-            />
-            <div className={homeslider.opacity}></div>
-            <div className={homeslider.description}>
-              <Logo className={homeslider.homeSliderTitle} />
-              <h2>{data.description}</h2>
-              <ButtonAction
-                to={data.path}
-                aria-label={`Przejdź do ${data.button}`}
-                tabIndex="-1"
-                aria-hidden="true"
-              >
-                {data.button}
-              </ButtonAction>
-            </div>
+    <div className={homeslider.wrapper}>
+      {sliderImage.map((data, index) => (
+        <div
+          key={index}
+          className={`${homeslider.slideWrapper} ${
+            index === current ? homeslider.active : homeslider.inactive
+          }`}
+        >
+          <img
+            src={data.src}
+            alt={data.altText}
+            className={homeslider.slide}
+            width="1920"
+            height="1080"
+            fetchpriority={index === 0 ? "high" : "auto"}
+            loading={index === 0 ? "eager" : "lazy"}
+            srcSet={`
+              ${data.src}?w=480 480w,
+              ${data.src}?w=768 768w,
+              ${data.src}?w=1024 1024w,
+              ${data.src} 1920w
+            `}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+          />
+          <div className={homeslider.overlay}>
+            <Logo />
+            <h2>{data.title}</h2>
+            <ButtonAction to={data.buttonLink}>{data.buttonText}</ButtonAction>
           </div>
         </div>
       ))}
-    </Slider>
+    </div>
   );
 }

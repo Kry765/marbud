@@ -10,6 +10,8 @@ import houseYearRound from "../../assets/offertsPhoto/domek_caloroczny.jpg";
 import offerts from "./offerts.module.scss";
 import LoadingComponent from "../../ui/LoadingComponent/LoadingComponent.jsx";
 import { Suspense } from "react";
+import "../../scss/main.scss";
+
 const houseTypes = [
   {
     path: "/oferta/domki-letniskowes",
@@ -35,15 +37,17 @@ export default function Offerts() {
         <header>
           <HomeSlider />
         </header>
-        <main data-aos="fade-right" data-aos-easing="ease-in-sine">
-          <Subtitle className={offerts.title}>{offertsData[0].title}</Subtitle>
-          <article>
-            <p className={offerts.description}>{offertsData[0].description}</p>
-          </article>
-          <article>
-            <p className={offerts.details}>{offertsData[0].details}</p>
-          </article>
-          <div className={offerts.photoOffertsBox}>
+        <main
+          className="page-wrapper"
+          data-aos="fade-right"
+          data-aos-easing="ease-in-sine"
+        >
+          <Subtitle className="title-margin">{offertsData[0].title}</Subtitle>
+          <div className="text-center">
+            <p>{offertsData[0].description}</p>
+            <p className="text-bold">{offertsData[0].details}</p>
+          </div>
+          <div className={`flex-center ${offerts.photoOffertsBox}`}>
             {houseTypes.map((house, index) => (
               <Link key={index} to={house.path}>
                 <div className={offerts.photoOffertWrapper}>
@@ -52,10 +56,8 @@ export default function Offerts() {
                     src={house.image}
                     alt={house.alt}
                   />
-                  <div className={offerts.photoOffertsOpacity}>
-                    <p className={offerts.photoOffertsDescription}>
-                      {house.description}
-                    </p>
+                  <div className={`flex-center ${offerts.photoOffertsOpacity}`}>
+                    <p className="text-uppercase">{house.description}</p>
                   </div>
                 </div>
               </Link>

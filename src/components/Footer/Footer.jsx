@@ -18,7 +18,7 @@ export default function Footer() {
     const loadData = async () => {
       try {
         const menu = await getStrapiData({
-          endpoint: "stopka-nawigacjas", // Sortowanie po stronie Strapi
+          endpoint: "stopka-nawigacjas",
           fetchData: (data) =>
             data.map((item) => ({
               name: item.name,

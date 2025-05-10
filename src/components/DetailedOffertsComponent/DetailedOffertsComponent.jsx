@@ -15,7 +15,7 @@ export default function DetailedOffertsComponent() {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`https://marbudapi.onrender.com/api/${type}?populate=*`)
+    fetch(`http://85.215.50.235:1337/api/${type}?populate=*`)
       .then((res) => {
         if (!res.ok) throw new Error("Network response was not ok");
         return res.json();
@@ -110,7 +110,7 @@ export default function DetailedOffertsComponent() {
         {galleryImages.length > 0 ? (
           <GalleryComponent
             cols={3}
-            item={item}
+            // item={item}
             photos={galleryImages.filter((img) => img.imageUrl)}
           />
         ) : (

@@ -8,6 +8,7 @@ export default function LoadingComponent() {
         justifyContent: "center",
         alignItems: "center",
         height: "100vh",
+        color: "#2E7D32",
       }}
     >
       <CircularProgress />

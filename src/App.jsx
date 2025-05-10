@@ -11,7 +11,7 @@ const Contact = lazy(() => import("./pages/Contact"));
 const Gallery = lazy(() => import("./pages/Gallery/Gallery"));
 const HowToWork = lazy(() => import("./pages/HowToWork/HowToWork"));
 const Offerts = lazy(() => import("./pages/Offerts/Offerts"));
-const OffertsType = lazy(() => import("./pages/OffertsType/OffertsType"));
+const OffertsType = lazy(() => import("./pages/OffertsType"));
 const DetailedOffertsPage = lazy(() =>
   import("./pages/DetailedOffertsPage/DetailedOffertsPage")
 );
