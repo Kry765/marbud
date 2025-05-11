@@ -15,7 +15,7 @@ export default function DetailedOffertsComponent() {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://85.215.50.235:1337/api/${type}?populate=*`)
+    fetch(`https://85.215.50.235/api/${type}?populate=*`)
       .then((res) => {
         if (!res.ok) throw new Error("Network response was not ok");
         return res.json();

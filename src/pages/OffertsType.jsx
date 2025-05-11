@@ -15,7 +15,7 @@ export default function OffertsType() {
   const { type } = useParams();
 
   useEffect(() => {
-    fetch(`http://85.215.50.235:1337/api/${type}?populate=*`)
+    fetch(`https://85.215.50.235/api/${type}?populate=*`)
       .then((res) => res.json())
       .then((data) => {
         setDomki(data.data);
