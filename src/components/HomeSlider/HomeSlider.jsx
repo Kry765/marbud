@@ -7,6 +7,7 @@ export default function HomeSlider() {
   const sliderImage = [
     {
       src: "/image/domek_1.webp",
+      altText: "Dom drewniany MARBUD",
       title: "Nowoczesne Domy Drewniane MARBUD  - gotowy projekt",
       buttonText: "Zobacz projekty",
       buttonLink: "/galeria",
@@ -14,6 +15,7 @@ export default function HomeSlider() {
     {
       src: "/image/domek_2.webp",
       title: "Domy Całoroczne i Letniskowe Najwyższej Jakości",
+      altText: "Dom drewniany MARBUD",
       buttonText: "Sprawdź szczegóły",
       buttonLink: "/oferta",
     },
@@ -21,12 +23,14 @@ export default function HomeSlider() {
       src: "/image/domek_3.webp",
       title: "Poznaj etapy realizacji Twojego wymarzonego domu",
       buttonText: "Dowiedz się więcej",
+      altText: "Dom drewniany MARBUD",
       buttonLink: "/jak-dzialamy",
     },
     {
       src: "/image/domek_4.webp",
       altText: "Dom drewniany MARBUD w zimowej scenerii",
       title: "Masz Pytania? Chętnie odpowiemy na wszystkie Twoje pytania",
+      altText: "Dom drewniany MARBUD",
       buttonText: "Kontakt",
       buttonLink: "/kontakt",
     },

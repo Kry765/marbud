@@ -52,7 +52,11 @@
     .overlay {
       justify-content: center;
       align-items: center;
+      text-align: center;
       padding: 40px;
+      h2{
+        padding: 1em 0;
+      }
     }
   }
   
