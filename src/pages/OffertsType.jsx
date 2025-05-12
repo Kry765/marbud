@@ -15,7 +15,7 @@ export default function OffertsType() {
   const { type } = useParams();
 
   useEffect(() => {
-    fetch(`https://marbudapi.onrender.com/api/${type}?populate=*`)
+    fetch(`https://api.marbud-domy.pl/api/${type}?populate=*`)
       .then((res) => res.json())
       .then((data) => {
         setDomki(data.data);

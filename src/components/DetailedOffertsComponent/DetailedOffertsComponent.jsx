@@ -15,7 +15,7 @@ export default function DetailedOffertsComponent() {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`https://marbudapi.onrender.com/api/${type}?populate=*`)
+    fetch(`https://api.marbud-domy.pl/api/${type}?populate=*`)
       .then((res) => {
         if (!res.ok) throw new Error("Network response was not ok");
         return res.json();
