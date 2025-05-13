@@ -1,121 +1,106 @@
-//background-nav-desktop
+@use '../../scss/colors.scss' as *;
+@use '../../scss/animations.scss' as *;
 
 .nav {
-    width: 100%;
-    color: #fff;
-    position: fixed;
-    z-index: 20;
-    font-size: 0.9rem;
-    top: 0;
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    gap: 20px; 
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+  &.scrolled {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
 }
-
-
-.burgerIcon{
-    z-index: 4;
-    position: fixed;
-    right: 0;
-    padding: 1em;
-    top: -10px;
+.desktopMenu {
+  display: flex;
+  gap: 1.5rem;
+  margin-left: 2rem;
+  @media (max-width: 768px) {
     display: none;
-    width: 2.5em;
-    height: 2.5em;
-    margin-right: 2px auto;
+  }
 }
 
-.socialPosition {
-    display: flex;
-    gap: 20px; 
-    font-size: 1.6rem;
-    margin-left: auto; 
-}
-.socialPosition:hover{
-    cursor: pointer;
-    color: #59956C;
+.menuItem {
+  color: $white-color;
+  text-decoration: none;
+  font-size: 0.9rem;
+  &:hover {
+    @include hover-effect
+  }
 }
 
-.mobileLogo{
-    margin: -1.5em 1rem;
-    padding-bottom: 2em;
-    z-index: 30;
-}
-
-.navScrolls{
-    background-color:rgba(0, 0, 0, 0.5)
-}
-
-
-.mobileMenuItems{
-    background-color: #000;
-    opacity: 0.9;
-    list-style-type: none;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    right: 0;
-    top: 0;
-    padding: 3rem 0rem;
-    text-transform: uppercase;
-    .mobileMenuItem{
-        margin-top: 0.8em;
-        padding: 1em 1.4em;
-        z-index: 30;
-        text-decoration: none;
-        color: #fff;
-        &:hover{
-            cursor: pointer;
-            color: #59956C;
-        }
-    }
-    }
-
-.closeIcon{
-    z-index: 4;
-    position: fixed;
-    right: 0;
-    padding: 1em;
-    top: -10px;
-    display: none;
-    width: 2.5em;
-    height: 2.5em;
-    margin-right: 2px auto;
-}
-
-.desktopMenuItems {
-    list-style-type: none;
-    display: flex;
-    gap: 20px; 
-    text-transform: uppercase;
-    margin-left: 20px; 
-}
-  
-  .desktopMenuItem {
-    display: flex;
-    text-decoration: none;
-    color: #fff;
-    transition: color 0.3s ease-in-out;
-  
-    &:hover {
-      color: #59956C;
-      cursor: pointer;
-    }
+.menuToggle {
+  display: none;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  z-index: 1001;
+  &:hover{
+    @include hover-effect
   }
 
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
 
-@media (max-width: 768px){
-    .burgerIcon, .closeIcon {
-        display: block;
-        right: 15px; 
-        top: -2px;
-        margin-right: -10px; 
-    }
-    .desktopMenuItems, .socialIcon{
-        display: none;
-    }
-    .navScrolls{
-    background-color: rgba(0,0,0,0.5);
-    }
+.menuIcon {
+  width: 2rem;
+  height: 2rem;
+  color: $white-color;
+  &:hover{
+    @include hover-effect
+  }
+}
+
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.95);
+  z-index: 1000;
+  flex-direction: column;
+}
+
+.mobileMenuContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.mobileMenuItem {
+  color: $white-color;
+  text-decoration: none;
+  font-size: 1.2rem;
+
+  &:hover {
+    @include hover-effect
+  }
+}
+
+.socialLinks {
+  display: flex;
+  gap: 1.5rem;
+  margin-left: auto;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.socialIcon {
+  font-size: 1.5rem;
+
+  &:hover {
+    @include hover-effect
+  }
 }

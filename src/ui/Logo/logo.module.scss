@@ -1,8 +1,13 @@
+@use '../../scss/colors.scss' as *;
+
+
 .colorMarbud{
-    color: #2E7D32;
+    color: $green-color;
 }
 
-h1{
+span{
+    font-weight: bold;
     z-index: 30;
+    font-size: 1.8rem;
 }
 

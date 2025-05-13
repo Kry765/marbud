@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import "../../scss/main.scss";
 import Logo from "../../ui/Logo/Logo.jsx";
 import IconComponent from "../../ui/IconComponent/IconComponent.jsx";
 import navbar from "./navbar.module.scss";
@@ -10,8 +11,7 @@ export default function Navbar() {
     menu: [],
     social: [],
   });
-  const [mobileIcon, setMobileIcon] = useState(true);
-  const [mobileMenu, setMobileMenu] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolling, setScrolling] = useState(false);
 
   useEffect(() => {
@@ -43,94 +43,78 @@ export default function Navbar() {
     loadData();
   }, []);
 
-  const handleMobileMenuIcon = () => {
-    setMobileIcon((prev) => !prev);
-  };
-
-  const handleMenu = () => {
-    setMobileMenu((prev) => !prev);
-  };
-
-  const handleClick = () => {
-    handleMobileMenuIcon();
-    handleMenu();
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
   const handleScroll = () => {
-    if (window.scrollY > 100) {
-      setScrolling(true);
-    } else {
-      setScrolling(false);
-    }
+    setScrolling(window.scrollY > 100);
   };
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  });
+  }, []);
 
   return (
-    <div className={`${navbar.nav} ${scrolling ? navbar.navScrolls : ""}`}>
-      <Link to="/" aria-label={`strona główna` || `Link do ${data.path}`}>
+    <div className={`${navbar.nav} ${scrolling ? navbar.scrolled : ""}`}>
+      <Link to="/" aria-label="Strona główna">
         <Logo />
       </Link>
 
-      <div className={navbar.desktopMenuItems}>
+      <div className={navbar.desktopMenu}>
         {navData.menu.map((data, index) => (
           <Link
             to={data.path}
-            aria-label={data.name || `Link do ${data.path}`}
+            aria-label={data.name}
             key={index}
-            className={navbar.desktopMenuItem}
+            className={`text-uppercase ${navbar.menuItem}`}
           >
             {data.name}
           </Link>
         ))}
       </div>
-      <div onClick={handleClick}>
-        {mobileIcon ? (
-          <IconComponent
-            name="reorder-three-outline"
-            className={navbar.burgerIcon}
-          />
-        ) : (
-          <IconComponent name="close-outline" className={navbar.closeIcon} />
-        )}
-      </div>
-      <div>
-        {mobileMenu ? (
-          <div className={navbar.mobileMenuItems}>
-            <Link to="/" onClick={() => (window.location.href = "/")}>
-              <Logo className={navbar.mobileLogo} />
-            </Link>
 
-            <div>
-              {navData.menu.map((data, index) => (
-                <div className={navbar.mobileMenuItem}>
-                  <Link
-                    to={data.path}
-                    key={index}
-                    aria-label={data.name || `Link do ${data.path}`}
-                  >
-                    {data.name}
-                  </Link>
-                </div>
-              ))}
-            </div>
+      <button
+        className={navbar.menuToggle}
+        onClick={toggleMenu}
+        aria-label={isMenuOpen ? "Zamknij menu" : "Otwórz menu"}
+      >
+        <IconComponent
+          name={isMenuOpen ? "close-outline" : "menu-outline"}
+          className={navbar.menuIcon}
+        />
+      </button>
+
+      {isMenuOpen && (
+        <div className={`flex-center ${navbar.mobileMenu}`}>
+          <div className={navbar.mobileMenuContent}>
+            {navData.menu.map((data, index) => (
+              <Link
+                to={data.path}
+                key={index}
+                className={`text-uppercase ${navbar.mobileMenuItem}`}
+                onClick={() => setIsMenuOpen(false)}
+                aria-label={data.name}
+              >
+                {data.name}
+              </Link>
+            ))}
           </div>
-        ) : undefined}
-      </div>
-      <div className={navbar.socialPosition}>
+        </div>
+      )}
+
+      <div className={navbar.socialLinks}>
         {navData.social.map((data, index) => (
           <Link
             to={data.path}
             key={index}
-            aria-label={data.name || `Link do ${data.path}`}
+            aria-label={`Link do ${data.socialIcon}`}
           >
             <IconComponent
               className={navbar.socialIcon}
               name={data.socialIcon}
-            ></IconComponent>
+            />
           </Link>
         ))}
       </div>

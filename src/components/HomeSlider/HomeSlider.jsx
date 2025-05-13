@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import Logo from "../../ui/Logo/Logo";
 import ButtonAction from "../../ui/ButtonAction/ButtonAction";
 import homeslider from "./homeslider.module.scss";
@@ -7,31 +7,32 @@ export default function HomeSlider() {
   const sliderImage = [
     {
       src: "/image/domek_1.webp",
-      altText: "Dom drewniany MARBUD",
-      title: "Nowoczesne Domy Drewniane MARBUD  - gotowy projekt",
-      buttonText: "Zobacz projekty",
+      altText: "Dom drewniany MARBUD – projekt gotowy do realizacji",
+      title:
+        "Producent domów drewnianych, całorocznych i letniskowowy - gotowe projekty do natychmiastowej realizacji",
+      buttonText: "Zobacz projekty domów",
       buttonLink: "/galeria",
     },
     {
       src: "/image/domek_2.webp",
-      title: "Domy Całoroczne i Letniskowe Najwyższej Jakości",
-      altText: "Dom drewniany MARBUD",
-      buttonText: "Sprawdź szczegóły",
+      title:
+        "Domy całoroczne i letniskowe z drewna - najwyższa jakość wykonania i materiałów",
+      altText: "Dom drewniany – całoroczny lub letniskowy",
+      buttonText: "Poznaj szczegóły oferty",
       buttonLink: "/oferta",
     },
     {
       src: "/image/domek_3.webp",
-      title: "Poznaj etapy realizacji Twojego wymarzonego domu",
+      title: "Zobacz, jak wygląda proces zamówienia domu krok po kroku",
       buttonText: "Dowiedz się więcej",
       altText: "Dom drewniany MARBUD",
       buttonLink: "/jak-dzialamy",
     },
     {
       src: "/image/domek_4.webp",
-      altText: "Dom drewniany MARBUD w zimowej scenerii",
-      title: "Masz Pytania? Chętnie odpowiemy na wszystkie Twoje pytania",
       altText: "Dom drewniany MARBUD",
-      buttonText: "Kontakt",
+      title: "Masz pytania? Skontaktuj się z nami – chętnie doradzimy",
+      buttonText: "Skontatuk się",
       buttonLink: "/kontakt",
     },
   ];
@@ -70,7 +71,7 @@ export default function HomeSlider() {
             className={homeslider.slide}
             width="1920"
             height="1080"
-            fetchpriority={index === 0 ? "high" : "auto"}
+            fetchPriority={index === 0 ? "high" : "auto"}
             loading={index === 0 ? "eager" : "lazy"}
             srcSet={`
               ${data.src}?w=480 480w,
@@ -82,8 +83,20 @@ export default function HomeSlider() {
           />
           <div className={homeslider.overlay}>
             <Logo />
-            <h2>{data.title}</h2>
+            <h1 className={homeslider.title}>{data.title}</h1>
             <ButtonAction to={data.buttonLink}>{data.buttonText}</ButtonAction>
+            <div className={homeslider.dotsWrapper}>
+              {sliderImage.map((_, index) => (
+                <button
+                  key={index}
+                  className={`${homeslider.dot} ${
+                    index === current ? homeslider.activeDot : ""
+                  }`}
+                  onClick={() => setCurrent(index)}
+                  aria-label={`Przejdź do slajdu ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       ))}

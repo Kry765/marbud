@@ -1,5 +1,7 @@
+@use './colors.scss' as *;
+
 .title-color{
-    color: #2E7D32;
+    color: $green-color;
 }
 
 .text-uppercase{

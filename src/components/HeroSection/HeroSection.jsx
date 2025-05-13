@@ -1,31 +1,36 @@
 import hero from "./hero.module.scss";
 import Subtitle from "../../ui/Subtitle/Subtitile";
 import ButtonAction from "../../ui/ButtonAction/ButtonAction";
-import React from "react";
 import ReactMarkdown from "react-markdown";
 
-export default function HeroSecion({ data, isReverse, showButton = true }) {
+export default function HeroSection({ data, isReverse, showButton = true }) {
   return (
-    <div
+    <section
+      aria-labelledby="hero-heading"
+      className={`${hero.findStyleBox} ${isReverse ? hero.reverse : ""}`}
       data-aos="fade-right"
       data-aos-easing="ease-in-sine"
-      className={`${hero.findStyleBox} ${isReverse ? hero.reverse : ""}`}
     >
       <div className={hero.findStyleWrapper}>
-        <Subtitle>{data.title}</Subtitle>
-        <div className={hero.findStyleDescription}>
+        <Subtitle id="hero-heading">{data.title}</Subtitle>
+        <article className={hero.findStyleDescription}>
           <ReactMarkdown>{data.description}</ReactMarkdown>
-        </div>
-        <div className={hero.findStyleBtn}>
-          {showButton && data.button && (
-            <ButtonAction to={data.path}>{data.button}</ButtonAction>
-          )}
-        </div>
+        </article>
+        {showButton && data.button && (
+          <div className={hero.findStyleBtn}>
+            <ButtonAction
+              to={data.path}
+              aria-label={`Przejdź do ${data.button}`}
+            >
+              {data.button}
+            </ButtonAction>
+          </div>
+        )}
       </div>
-      <div className={hero.findStyleImage}>
+      <figure className={hero.findStyleImage}>
         <img
           src={data.imageUrl}
-          alt="house_image"
+          alt={data.altText || "Nowoczesny dom drewniany MARBUD"}
           loading="lazy"
           width="600"
           height="400"
@@ -35,7 +40,8 @@ export default function HeroSecion({ data, isReverse, showButton = true }) {
             height: "auto",
           }}
         />
-      </div>
-    </div>
+        {data.imageCaption && <figcaption>{data.imageCaption}</figcaption>}
+      </figure>
+    </section>
   );
 }
