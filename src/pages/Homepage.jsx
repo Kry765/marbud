@@ -98,10 +98,10 @@ export default function Homepage() {
               data-aos="fade-right"
               data-aos-easing="ease-in-sine"
             >
-              <h2 id="map-heading" className="title-margin">
-                Znajdziesz nas <span className="title-color">tutaj!</span>
-              </h2>
               <div role="figure" aria-label="Lokalizacja MARBUD na mapie">
+                <Subtitle id="map-heading" className="title-margin">
+                  Znajdziesz nas <span className="title-color">tutaj!</span>
+                </Subtitle>
                 <GoogleMaps />
               </div>
             </div>

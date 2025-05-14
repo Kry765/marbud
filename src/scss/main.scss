@@ -2,6 +2,7 @@
 
 .title-color{
     color: $green-color;
+
 }
 
 .text-uppercase{
@@ -19,6 +20,9 @@
 .title-margin{
     text-align: center;
     margin: 3em auto;
+        span{
+        font-size: 2rem;
+    }
 }
 
 .page-wrapper{
