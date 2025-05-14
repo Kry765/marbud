@@ -6,7 +6,7 @@ import {
 } from "@vis.gl/react-google-maps";
 
 export default function GoogleMaps() {
-  const position = { lat: 49.539568, lng: 19.109707 };
+  const position = { lat: 49.542597, lng: 19.105033 };
 
   return (
     <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS}>
