@@ -78,21 +78,11 @@ export default function DetailedOffertsComponent() {
         <div className={detailed.descriptionBox}>
           <Subtitle className={detailed.title}>{domek.title}</Subtitle>
           <ul className={detailed.specificationDescription}>
-            <li>
-              <span>Ilość pomieszczeń:</span> {domek.roomCount}
-            </li>
-            <li>
-              <span>Materiały:</span> {domek.materials}
-            </li>
-            <li>
-              <span>Izolacja:</span> {domek.isolation}
-            </li>
-            <li>
-              <span>Powierzchnia:</span> {domek.area}
-            </li>
-            <li className={detailed.price}>
-              <span>Cena:</span> {domek.price}
-            </li>
+            <li>Ilość pomieszczeń: {domek.roomCount}</li>
+            <li>Materiały: {domek.materials}</li>
+            <li>Izolacja: {domek.isolation}</li>
+            <li>Powierzchnia: {domek.area}</li>
+            <li className={detailed.price}>Cena: {domek.price}</li>
           </ul>
 
           <div className={detailed.descriptionText}>
