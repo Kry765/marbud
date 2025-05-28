@@ -102,7 +102,7 @@ export default function Homepage() {
                 <Subtitle id="map-heading" className="title-margin">
                   Znajdziesz nas <span className="title-color">tutaj!</span>
                 </Subtitle>
-                <GoogleMaps />
+                {/* <GoogleMaps /> */}
               </div>
             </div>
           </section>

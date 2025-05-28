@@ -1,13 +1,14 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import tailwindcss from '@tailwindcss/vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
-import compression from 'vite-plugin-compression'; // ✅ More reliable alternative
+import compression from 'vite-plugin-compression';
+import tailwindcss from '@tailwindcss/vite'
+
 
 export default defineConfig({
   base: '/',
   plugins: [
-    compression({ algorithm: 'gzip' }), // Works with Vite 4/5
+    compression({ algorithm: 'gzip' }), 
     react(),
     tailwindcss(),
     tsconfigPaths(),
