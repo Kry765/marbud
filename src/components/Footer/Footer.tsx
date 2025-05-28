@@ -4,13 +4,14 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getStrapiData } from "../../hooks/getStrapiData";
 import FooterDescription from "./FooterDescription";
-
+import MenuItems from "../MenuItems/MenuItems";
+import FooterContactData from "./FooterContactData";
 import footerDescriptionData from "../../data/footerDescriptionData.json";
 import menuData from "../../data/menuData.json";
 
 import type { FooterDescriptionType } from "../../types/FooterDescriptionType";
 import type { MenuType } from "../../types/MenuType";
-import MenuItems from "../MenuItems/MenuItems";
+import type { ContactData, AddressData } from "../../types/OwnerData";
 
 const typeData = footerDescriptionData as FooterDescriptionType;
 const typeMenu = menuData as MenuType;
@@ -18,10 +19,12 @@ const typeMenu = menuData as MenuType;
 const description = typeData.footerDescription.description;
 
 export default function Footer() {
-  const [footerData, setFooterData] = useState({
-    menu: [],
+  const [footerData, setFooterData] = useState<{
+    social: any[];
+    contact: ContactData[];
+    address: AddressData[];
+  }>({
     social: [],
-    description: "Brak opisu",
     contact: [],
     address: [],
   });
@@ -37,10 +40,6 @@ export default function Footer() {
               path: item.path,
               position: item.position,
             })),
-        });
-
-        const descriptionData = await getStrapiData({
-          endpoint: "stopka-opi",
         });
 
         const contact = await getStrapiData({
@@ -70,7 +69,6 @@ export default function Footer() {
 
         setFooterData({
           social,
-          description: descriptionData.description || "Brak opisu",
           contact,
           address,
         });
@@ -100,7 +98,6 @@ export default function Footer() {
           ))}
         </div>
       </div>
-
       <div className="py-8 md:w-1/4 uppercase">
         <h2 className="uppercase text-xl">Menu</h2>
         <MenuItems
@@ -108,27 +105,27 @@ export default function Footer() {
           className="flex justify-center md:justify-start hover:text-green-600 transition-colors duration-250"
         />
       </div>
-
-      <div className="py-8 md:w-1/4">
-        <h2 className="uppercase text-xl">kontakt</h2>
-        {footerData.contact.map((data, index) => (
-          <div key={index}>
+      <FooterContactData<ContactData>
+        title="Kontakt"
+        items={footerData.contact}
+        renderItem={(data) => (
+          <>
             <p>{data.nameSurname}</p>
             <p>{data.phone}</p>
             <p>{data.email}</p>
-          </div>
-        ))}
-      </div>
-
-      <div className="py-8 md:w-1/4">
-        <h3 className="uppercase text-xl">Adres</h3>
-        {footerData.address.map((data, index) => (
-          <div key={index}>
+          </>
+        )}
+      />
+      <FooterContactData<AddressData>
+        title="Adres"
+        items={footerData.address}
+        renderItem={(data) => (
+          <>
             <p>{data.street}</p>
             <p>{data.city}</p>
-          </div>
-        ))}
-      </div>
+          </>
+        )}
+      />
     </div>
   );
 }
