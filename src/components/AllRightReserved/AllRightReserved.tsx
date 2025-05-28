@@ -1,8 +1,6 @@
-import allright from "./allright.module.scss";
-
 export default function AllRightReserved() {
   return (
-    <p className={allright.text}>
+    <p className="bg-black text-white text-center">
       Krzysztof Klęka 2025 | &copy; Wszelkie prawa zastrzeżone
     </p>
   );

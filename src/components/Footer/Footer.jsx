@@ -1,4 +1,3 @@
-import footer from "./footer.module.scss";
 import Logo from "../../ui/Logo/Logo";
 import IconComponent from "../../ui/IconComponent/IconComponent";
 import { Link } from "react-router-dom";
@@ -82,16 +81,16 @@ export default function Footer() {
   }, []);
 
   return (
-    <div className={footer.footerWrapper}>
-      <div className={footer.footerBox}>
+    <div className="bg-black text-white text-center justify-center items-center md:flex flex-row justify-center leading-8 flex-wrap text-[1rem]">
+      <div className="w-1/4 p-4 mt-1">
         <Logo />
         <p>{footerData.description}</p>
-        <div className={footer.socialMediaPosition}>
+        <div className="flex gap-2">
           {footerData.social.map((data, index) => (
             <Link
               to={data.path}
               key={index}
-              className={footer.footerMenu}
+              className="hover:cursor-pointer hover:text-[#59956C]"
               aria-label={data.name || `Link do ${data.path}`}
             >
               <IconComponent name={data.socialIcon}></IconComponent>
@@ -100,13 +99,13 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className={`${footer.footerBox} ${footer.footerUppercase}`}>
+      <div className="p-4 w-1/4 m-1 uppercase">
         <h2>Menu</h2>
         {footerData.menu.map((data, index) => (
           <Link
             to={data.path}
             key={index}
-            className={footer.footerMenu}
+            className="flex hover:cursor-pointer hover:color-[#59956C]"
             title={data.name}
           >
             {data.name}
@@ -114,8 +113,8 @@ export default function Footer() {
         ))}
       </div>
 
-      <div className={footer.footerBox}>
-        <h2 className={footer.footerUppercase}>kontakt</h2>
+      <div className="p-4 w-1/4 m-1">
+        <h2 className="uppercase">kontakt</h2>
         {footerData.contact.map((data, index) => (
           <div key={index}>
             <p>{data.nameSurname}</p>
@@ -125,8 +124,8 @@ export default function Footer() {
         ))}
       </div>
 
-      <div className={footer.footerBox}>
-        <h3 className={footer.footerUppercase}>Adres</h3>
+      <div className="p-4 w-1/4 m-1">
+        <h3 className="uppercase">Adres</h3>
         {footerData.address.map((data, index) => (
           <div key={index}>
             <p>{data.street}</p>
