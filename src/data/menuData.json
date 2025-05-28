@@ -1,0 +1,29 @@
+{
+    "menuData": [
+        {
+            "key": "menu1",
+            "label": "galeria",
+            "path": "../galeria"
+        },
+        {
+            "key": "menu2",
+            "label": "oferta",
+            "path": "../oferta"
+        },
+        {
+            "key": "menu3",
+            "label": "kontakt",
+            "path": "../kontakt"
+        },
+        {
+            "key": "menu4",
+            "label": "technologia",
+            "path": "../technologia"
+        },
+        {
+            "key": "menu5",
+            "label": "jak działamy",
+            "path": "../jak-dzialamy"
+        }
+    ]
+}

@@ -3,6 +3,19 @@ import IconComponent from "../../ui/IconComponent/IconComponent";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getStrapiData } from "../../hooks/getStrapiData";
+import FooterDescription from "./FooterDescription";
+
+import footerDescriptionData from "../../data/footerDescriptionData.json";
+import menuData from "../../data/menuData.json";
+
+import type { FooterDescriptionType } from "../../types/FooterDescriptionType";
+import type { MenuType } from "../../types/MenuType";
+import MenuItems from "../MenuItems/MenuItems";
+
+const typeData = footerDescriptionData as FooterDescriptionType;
+const typeMenu = menuData as MenuType;
+
+const description = typeData.footerDescription.description;
 
 export default function Footer() {
   const [footerData, setFooterData] = useState({
@@ -16,16 +29,6 @@ export default function Footer() {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const menu = await getStrapiData({
-          endpoint: "stopka-nawigacjas",
-          fetchData: (data) =>
-            data.map((item) => ({
-              name: item.name,
-              path: item.path,
-              position: item.position,
-            })),
-        });
-
         const social = await getStrapiData({
           endpoint: "stopka-opis-socials",
           fetchData: (data) =>
@@ -66,7 +69,6 @@ export default function Footer() {
         });
 
         setFooterData({
-          menu,
           social,
           description: descriptionData.description || "Brak opisu",
           contact,
@@ -81,16 +83,16 @@ export default function Footer() {
   }, []);
 
   return (
-    <div className="bg-black text-white text-center justify-center items-center md:flex flex-row justify-center leading-8 flex-wrap text-[1rem]">
-      <div className="w-1/4 p-4 mt-1">
+    <div className="flex flex-wrap flex-col md:flex-row justify-center md:justify-start md:text-left sm:text-center items-center md:items-start bg-black text-white leading-8 p-6">
+      <div className="md:w-1/4 flex flex-col py-8">
         <Logo />
-        <p>{footerData.description}</p>
-        <div className="flex gap-2">
+        <FooterDescription description={description} />
+        <div className="flex justify-center md:justify-start gap-2">
           {footerData.social.map((data, index) => (
             <Link
               to={data.path}
               key={index}
-              className="hover:cursor-pointer hover:text-[#59956C]"
+              className="hover:text-green-600 transition-colors duration-250 p-2 text-2xl"
               aria-label={data.name || `Link do ${data.path}`}
             >
               <IconComponent name={data.socialIcon}></IconComponent>
@@ -99,22 +101,16 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="p-4 w-1/4 m-1 uppercase">
-        <h2>Menu</h2>
-        {footerData.menu.map((data, index) => (
-          <Link
-            to={data.path}
-            key={index}
-            className="flex hover:cursor-pointer hover:color-[#59956C]"
-            title={data.name}
-          >
-            {data.name}
-          </Link>
-        ))}
+      <div className="py-8 md:w-1/4 uppercase">
+        <h2 className="uppercase text-xl">Menu</h2>
+        <MenuItems
+          menuData={typeMenu.menuData}
+          className="flex justify-center md:justify-start hover:text-green-600 transition-colors duration-250"
+        />
       </div>
 
-      <div className="p-4 w-1/4 m-1">
-        <h2 className="uppercase">kontakt</h2>
+      <div className="py-8 md:w-1/4">
+        <h2 className="uppercase text-xl">kontakt</h2>
         {footerData.contact.map((data, index) => (
           <div key={index}>
             <p>{data.nameSurname}</p>
@@ -124,8 +120,8 @@ export default function Footer() {
         ))}
       </div>
 
-      <div className="p-4 w-1/4 m-1">
-        <h3 className="uppercase">Adres</h3>
+      <div className="py-8 md:w-1/4">
+        <h3 className="uppercase text-xl">Adres</h3>
         {footerData.address.map((data, index) => (
           <div key={index}>
             <p>{data.street}</p>
